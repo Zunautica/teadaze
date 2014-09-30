@@ -1,8 +1,8 @@
 <?php
 
-	class PortalController extends Controller {
+	class portalController extends Controller {
 
-		public function init()
+		public function init(array $url)
 		{
 			$this->setTitle('Portal');
 			$this->setVariable('title', "FOOBAR");

@@ -6,3 +6,6 @@ try {
 } catch(exception $e) {
 	echo $e;
 }
+
+
+echo peak_memory_string();

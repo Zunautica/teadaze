@@ -1,22 +1,16 @@
 <?php
 
 	abstract class Controller {
-		private $title;
+		private $title = "";
 
-		private $name;
-		private $container;
+		private $name = null;
+		private $view = null;
 
 		private $access;
 
 		public function __construct($name)
 		{
-			$this->container = new TemplateContainer();
 			$this->name = $name;
-		}
-
-		protected function loadTemplate($name)
-		{
-			return $this->container->loadTemplate("controllers/{$this->name}/views/$name.php");
 		}
 
 		protected function loadModel($model)
@@ -30,6 +24,32 @@
 			}
 		}
 
+		protected function loadView($view)
+		{
+			try { 
+				$this->view = View::load($this->name, $view);
+			} catch (exception $e) {
+				echo $e;
+			}
+		}
+
+		protected final function loadTemplate()
+		{
+			if($this->view == null)
+				return null;
+
+			return $this->view->loadTemplate();
+		}
+
+
+		protected function setVariable($var, $value)
+		{
+			if($this->view == null)
+				return;
+
+			$this->view->setVariable($var, $value);
+		}
+
 		protected final function setTitle($title)
 		{
 			$this->title = $title;
@@ -40,10 +60,6 @@
 			return $this->title;
 		}
 
-		protected final function setVariable($var, $value)
-		{
-			$this->container->__set($var, $value);
-		}
 
 		abstract public function init(array $url);
 

@@ -5,9 +5,12 @@ include('system/db/dbhandler.php');
 include('system/db/dbaccessor.php');
 
 include('system/helpers/url.php');
+include('system/helpers/metric.php');
 
-include('system/models/Model.php');
-include('system/models/LoadModel.php');
+include('system/model/Model.php');
+include('system/model/LoadModel.php');
 
-include('system/controller/TemplateContainer.php');
+include('system/view/TemplateContainer.php');
+include('system/view/View.php');
+
 include('system/controller/Controller.php');

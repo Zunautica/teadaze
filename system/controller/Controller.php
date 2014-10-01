@@ -68,6 +68,11 @@
 
 		abstract public function init(array $url);
 
+		public function dynamic(array $url)
+		{
+			return null;
+		}
+
 		public final function getView()
 		{
 			return $this->view;

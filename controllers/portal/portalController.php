@@ -8,4 +8,10 @@
 			$this->setVariable('title', "FOOBAR");
 			return $this;
 		}
+
+		public function dynamic(array $url)
+		{
+			$this->loadView("ajax");
+			$this->setVariable('values', 103476);
+		}
 	}

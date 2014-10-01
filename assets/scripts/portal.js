@@ -1,5 +1,5 @@
 function onresponsePortal(reply) {
-	alert(reply);
+	console.log(reply);
 }
 
 Pxi.addEventListener('load', function () {

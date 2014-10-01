@@ -1,4 +1,5 @@
 <?php
+$stime = microtime();
 include('system/entry.php');
 $entry = new Entry();
 try {
@@ -7,5 +8,8 @@ try {
 	echo $e;
 }
 
+$etime = microtime();
+echo "<div>".peak_memory_string()."</div>";
+echo "<div>".time_us_ms($etime-$stime)."ms</div>";
 
-echo peak_memory_string();
+

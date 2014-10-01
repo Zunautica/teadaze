@@ -14,3 +14,8 @@ function peak_memory_string()
 
 	return $pmu;
 }
+
+function time_us_ms($time)
+{
+	return round((($time)*1000000)/1000);
+}

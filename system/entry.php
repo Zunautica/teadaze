@@ -21,7 +21,7 @@ class Entry
 
 		try {
 			$controller = Controller::load($url[0]);
-			$controller->init(url_next_dir($url));
+			$controller = $controller->init(url_next_dir($url));
 			return $controller->show();
 		} catch (exception $e) {
 			throw new Exception("<strong>Error on run()</strong><br />$e");

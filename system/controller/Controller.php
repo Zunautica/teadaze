@@ -60,6 +60,12 @@
 			return $this->title;
 		}
 
+		protected final function chainload($controller, $url)
+		{
+			$cnt = Controller::load($controller);
+			return $cnt->init($url);
+		}
+
 
 		abstract public function init(array $url);
 

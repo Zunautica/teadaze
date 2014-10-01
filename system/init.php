@@ -10,7 +10,10 @@ include('system/helpers/metric.php');
 include('system/model/Model.php');
 include('system/model/LoadModel.php');
 
+include('system/AssetHandler.php');
+
 include('system/view/TemplateContainer.php');
 include('system/view/View.php');
+include('system/frame/Frame.php');
 
 include('system/controller/Controller.php');

@@ -1,11 +1,10 @@
 <?php
 
-	abstract class View
+	abstract class View extends AssetHandler
 	{
 		private $container;
 		private $controller;
 
-		private $assets = array('scripts' => array(), 'styles' => array());
 
 		public function __construct($controller)
 		{
@@ -17,15 +16,6 @@
 		abstract public function loadTemplate();
 		abstract public function init();
 
-		protected final function addScript($path)
-		{
-			$this->assets['scripts'][] = $path;
-		}
-
-		protected final function addStyle($path)
-		{
-			$this->assets['styles'][] = $path;
-		}
 
 		protected final function includeTemplate($name)
 		{

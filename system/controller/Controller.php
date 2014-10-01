@@ -5,6 +5,7 @@
 
 		private $name = null;
 		private $view = null;
+		private $frame = null;
 
 		private $access;
 
@@ -60,16 +61,29 @@
 			return $this->title;
 		}
 
+		protected final function setFrame($frame)
+		{
+			$this->frame = $frame;
+		}
+
+		public final function getFrame()
+		{
+			return $this->frame;
+		}
+
 		protected final function chainload($controller, $url)
 		{
 			$cnt = Controller::load($controller);
 			return $cnt->init($url);
 		}
 
-
 		abstract public function init(array $url);
 
-		abstract public function show();
+		public final function getView()
+		{
+			return $this->view;
+		}
+
 		static public function load($controller)
 		{
 			static $loaded = array();

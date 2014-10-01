@@ -18,3 +18,13 @@ function url_next_dir(array $url)
 		return null;
 	return array_splice($url, 1);
 }
+
+function asset_script_url($asset)
+{
+	return "<script src=\"assets/scripts/$asset\" type=\"text/javascript\"></script>\n";
+}
+
+function asset_style_url($asset)
+{
+	return "<link href=\"assets/styles/$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
+}

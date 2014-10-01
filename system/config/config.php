@@ -6,5 +6,6 @@
 		'db' => 'lim',
 		'auto_control' => 'portal',
 		'auto_frame' => 'std.clear',
-		'dynamic_keyword' => 'ajax'
+		'dynamic_keyword' => 'ajax',
+		'debug' => true
 		);

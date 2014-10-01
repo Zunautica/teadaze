@@ -4,6 +4,7 @@
 		public function init()
 		{
 			$this->setTemplate('clear');
+			$this->addScript('global.js.php');
 			$controller = Controller::load('locked');
 			$controller->toggleRoot(false);
 			$controller = $controller->init(array());

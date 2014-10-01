@@ -9,7 +9,10 @@ try {
 }
 
 $etime = microtime();
-echo "<div>".peak_memory_string()."</div>";
-echo "<div>".time_us_ms($etime-$stime)."ms</div>";
+if($config['debug'] == true) {
+	echo "<div>".peak_memory_string()."</div>";
+	echo "<div>".time_us_ms($etime-$stime)."ms</div>";
+}
+
 
 

@@ -4,7 +4,7 @@
 
 		public function init()
 		{
-			$this->addScript('lim.js');
+			$this->addScript('portal.js');
 			$this->setTitle("Portal");
 		}
 

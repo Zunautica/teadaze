@@ -132,5 +132,29 @@ var Pxi = {
 
 			Pxi.Ajax.rox.makeRequest(controller, args, callback, post);
 		}
+	},
+
+	hooks: {
+		load: {
+			list: new Array(),
+
+			add: function (callback) {
+				Pxi.hooks.load.list.push(callback);
+			},
+
+			execute: function () {
+				for(var i = 0; i < Pxi.hooks.load.list.length; i++)
+					Pxi.hooks.load.list[i]();
+			}
+		}
+	},
+
+	addEventListener: function(type, callback) {
+		if(Pxi.hooks[type] === undefined)
+			return undefined;
+
+		Pxi.hooks[type].add(callback);
 	}
 }
+
+window.addEventListener('load', Pxi.hooks.load.execute);

@@ -5,6 +5,7 @@
 		public function init()
 		{
 			$this->addScript('lim.js');
+			$this->setTitle("Portal");
 		}
 
 		public function loadTemplate()

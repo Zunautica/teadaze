@@ -1,3 +1,6 @@
+<html>
+<head>
+	<title><?php echo $this->view->getTitle(); ?></title>
 <div>
 <h1>Frame</h1>
 </h1>

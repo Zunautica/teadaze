@@ -1,8 +1,6 @@
 <?php
 
 	abstract class Controller {
-		private $title = "";
-
 		private $name = null;
 		private $view = null;
 		private $frame = null;
@@ -49,16 +47,6 @@
 				return;
 
 			$this->view->setVariable($var, $value);
-		}
-
-		protected final function setTitle($title)
-		{
-			$this->title = $title;
-		}
-
-		public final function getTitle()
-		{
-			return $this->title;
 		}
 
 		protected final function setFrame($frame)

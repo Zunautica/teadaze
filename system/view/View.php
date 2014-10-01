@@ -5,6 +5,8 @@
 		private $container;
 		private $controller;
 
+		private $title = "";
+
 
 		public function __construct($controller)
 		{
@@ -16,6 +18,16 @@
 		abstract public function loadTemplate();
 		abstract public function init();
 
+
+		protected final function setTitle($title)
+		{
+			$this->title = $title;
+		}
+
+		public final function getTitle()
+		{
+			return $this->title;
+		}
 
 		protected final function includeTemplate($name)
 		{

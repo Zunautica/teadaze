@@ -24,6 +24,7 @@
 		abstract public function init();
 		public final function show()
 		{
+			$this->setVariable('assets', $this->getAssets());
 			return $this->loadTemplate();
 		}
 

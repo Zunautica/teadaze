@@ -4,6 +4,7 @@
 		private $name = null;
 		private $view = null;
 		private $frame = null;
+		private $root = true;
 
 		private $access;
 
@@ -70,6 +71,16 @@
 		public final function getView()
 		{
 			return $this->view;
+		}
+
+		public final function toggleRoot($flag)
+		{
+			$this->root = $flag;
+		}
+
+		protected final function isRoot()
+		{
+			return $this->root;
 		}
 
 		static public function load($controller)

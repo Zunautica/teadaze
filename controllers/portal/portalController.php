@@ -8,9 +8,4 @@
 			$this->setVariable('title', "FOOBAR");
 			return $this;
 		}
-
-		public function show()
-		{
-			return $this->loadTemplate();
-		}
 	}

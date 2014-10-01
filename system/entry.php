@@ -21,7 +21,7 @@ class Entry
 
 		try {
 			$controller = Controller::load($url[0]);
-			$controller = $controller->init(url_next_dir($url));
+			$controller = $controller->init(url_next_dir($url), true);
 
 			$frame = $controller->getFrame();
 			if($frame == null)

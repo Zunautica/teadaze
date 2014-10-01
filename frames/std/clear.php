@@ -12,6 +12,7 @@
 <h1>Frame</h1>
 </h1>
 <?php
+	echo $this->locked->loadTemplate();
 	echo $this->view->loadTemplate();
 ?>
 <div>

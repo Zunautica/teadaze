@@ -5,16 +5,29 @@
 		private $container;
 		private $controller;
 
-		private $scripts = array();
-		private $styles = array();
+		private $assets = array('scripts' => array(), 'styles' => array());
+
 		public function __construct($controller)
 		{
 			$this->controller = $controller;
 			$this->container = new TemplateContainer();
+			$this->init();
 		}
 
 		abstract public function loadTemplate();
-		protected function includeTemplate($name)
+		abstract public function init();
+
+		protected final function addScript($path)
+		{
+			$this->assets['scripts'][] = $path;
+		}
+
+		protected final function addStyle($path)
+		{
+			$this->assets['styles'][] = $path;
+		}
+
+		protected final function includeTemplate($name)
 		{
 			return $this->container->loadTemplate("controllers/{$this->controller}/views/$name.php");
 		}

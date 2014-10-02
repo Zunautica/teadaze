@@ -5,8 +5,7 @@ class Entry
 	private $db;
 	private function init()
 	{
-		$this->db = new DBO();
-		$this->db->connect();
+		$this->db = DBO::init();
 		LoadModel::setDatabase($this->db);
 	}
 

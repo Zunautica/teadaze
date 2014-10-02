@@ -1,4 +1,5 @@
 <?php
+	header("content-type: application/javascript");
 	include('../../system/config/config.php');
 ?>
 var Pxi = {

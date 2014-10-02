@@ -3,8 +3,9 @@
 class DBO
 {
 	private $connection = null;
+	private static $dbo = null;
 
-	public final function connect()
+	public function connect()
 	{
 		global $config;
 		$this->connection = new mysqli('localhost', $config['dbuser'], $config['dbpass'], $config['db']);
@@ -81,5 +82,21 @@ class DBO
 		}
 		
 		return $this->query("UPDATE `$table` SET $update WHERE $where");
+	}
+
+	public static function init()
+	{
+		if(self::$dbo)
+			return self::$dbo;
+
+		$dbo = new DBO();
+		$dbo->connect();
+		self::$dbo = $dbo;
+		return $dbo;
+	}
+
+	public static function get()
+	{
+		return self::$dbo;
 	}
 }

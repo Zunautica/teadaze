@@ -8,6 +8,9 @@
 		}
 
 		public function __get($name) {
+			if(!isset($this->properties[$name]))
+				return null;
+
 			return $this->properties[$name];
 		}
 

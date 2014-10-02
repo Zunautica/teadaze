@@ -6,7 +6,6 @@ class Entry
 	private function init()
 	{
 		$this->db = DBO::init();
-		LoadModel::setDatabase($this->db);
 	}
 
 	public function run()

@@ -8,7 +8,6 @@ include('base/helpers/url.php');
 include('base/helpers/metric.php');
 
 include('base/model/Model.php');
-include('base/model/LoadModel.php');
 
 include('base/AssetHandler.php');
 

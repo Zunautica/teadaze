@@ -31,7 +31,7 @@
 
 		protected final function loadTemplate()
 		{
-			return $this->container->loadTemplate("library/frames/{$this->frame}/$this->template.php");
+			return $this->container->loadTemplate("site/frames/{$this->frame}/$this->template.php");
 		}
 
 		protected final function setVariable($var, $value)
@@ -50,7 +50,7 @@
 			if(!isset($frame[1]))
 				throw new Exception("Malformed frame load");
 
-			$path = "library/frames/{$frame[0]}/{$frame[1]}Frame.php";
+			$path = "site/frames/{$frame[0]}/{$frame[1]}Frame.php";
 			if(!file_exists($path)) {
 				throw new Exception("Frame '$frame.$template' does not exist!<br />$path");
 			}

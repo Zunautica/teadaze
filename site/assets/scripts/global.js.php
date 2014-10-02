@@ -1,6 +1,6 @@
 <?php
 	header("content-type: application/javascript");
-	include('../../../system/config/config.php');
+	include('../../../base/config/config.php');
 ?>
 var Pxi = {
 	Ajax: {

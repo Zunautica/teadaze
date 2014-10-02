@@ -1,5 +1,5 @@
 <?php
-	class TableModel
+	class PTableModel
 	{
 		private $dbo = null;
 		private $table = null;

@@ -3,7 +3,7 @@
 	abstract class Model extends DBAccessor {
 		protected function table($table)
 		{
-			return new TableModel($this->db, $table);
+			return new PTableModel($this->db, $table);
 		}
 
 		public static function load($model) {

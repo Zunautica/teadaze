@@ -15,9 +15,8 @@
 
 		protected function loadModel($model)
 		{
-			$model = explode('.', $model);
 			try {
-			return LoadModel::of($model[0], $model[1]);
+			return Model::load($model);
 			} catch(Exception $e) {
 				echo $e->getMessage();
 				die();

@@ -1,5 +1,7 @@
 <?php
-
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 function peak_memory_string()
 {
 	$pmu = memory_get_peak_usage();

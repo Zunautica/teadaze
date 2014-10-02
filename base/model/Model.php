@@ -1,4 +1,7 @@
 <?php
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 	include('TableModel.php');
 	abstract class Model extends DBAccessor {
 		protected function table($table)

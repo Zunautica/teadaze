@@ -1,4 +1,7 @@
 <?php
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 	/*
 	This acts as a template for roles.
 	Assuming a 64bit system, you can have

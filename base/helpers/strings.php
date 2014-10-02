@@ -1,4 +1,7 @@
 <?php
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 	function string_prepare_mysql($string)
 	{
 		if(get_magic_quotes_gpc())

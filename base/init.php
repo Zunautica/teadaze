@@ -1,4 +1,8 @@
 <?php
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
+
 include('base/config/config.php');
 include('base/db/dbo.php');
 include('base/db/dbhandler.php');

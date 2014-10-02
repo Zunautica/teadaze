@@ -1,4 +1,7 @@
 <?php
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 	abstract class AssetHandler {
 		private $assets = array('scripts' => array(), 'styles' => array());
 

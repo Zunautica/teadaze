@@ -1,3 +1,6 @@
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 <?php
 	header("content-type: application/javascript");
 	include('../../../base/config/config.php');

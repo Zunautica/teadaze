@@ -1,4 +1,8 @@
 <?php
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
+
 include('base/init.php');
 class Entry
 {

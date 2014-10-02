@@ -1,5 +1,7 @@
 <?php
-
+/* Copyright 2014, Zunautica Initiatives Ltd.
+*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
+*/
 function url_array($url)
 {
 	$a = explode('?', $url);

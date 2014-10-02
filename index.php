@@ -1,6 +1,6 @@
 <?php
 $stime = microtime();
-include('system/entry.php');
+include('base/entry.php');
 $entry = new Entry();
 try {
 	echo $entry->run();

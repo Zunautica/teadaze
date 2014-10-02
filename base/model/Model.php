@@ -10,7 +10,7 @@
 			if(isset($models[$model]))
 				return $models[$model];
 
-			$path = "models/{$atom[0]}/{$atom[1]}Model.php";
+			$path = "library/models/{$atom[0]}/{$atom[1]}Model.php";
 			if(!file_exists($path)) {
 				throw new Exception("Model '{$model}' does not exist!<br />$path");
 			}

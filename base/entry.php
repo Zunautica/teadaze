@@ -1,5 +1,5 @@
 <?php
-include('system/init.php');
+include('base/init.php');
 class Entry
 {
 	private $db;

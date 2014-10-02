@@ -93,7 +93,7 @@
 
 			if(isset($loaded[$controller]))
 				return $loaded[$controller];
-			$path = "controllers/$controller/{$controller}Controller.php";
+			$path = "library/controllers/$controller/{$controller}Controller.php";
 			if(!file_exists($path)) {
 				throw new Exception("Controller '$controller' does not exist!<br />$path");
 			}

@@ -21,10 +21,10 @@ function url_next_dir(array $url)
 
 function asset_script_url($asset)
 {
-	return "<script src=\"assets/scripts/$asset\" type=\"text/javascript\"></script>\n";
+	return "<script src=\"library/assets/scripts/$asset\" type=\"text/javascript\"></script>\n";
 }
 
 function asset_style_url($asset)
 {
-	return "<link href=\"assets/styles/$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
+	return "<link href=\"library/assets/styles/$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
 }

@@ -31,7 +31,7 @@
 
 		protected final function includeTemplate($name)
 		{
-			return $this->container->loadTemplate("controllers/{$this->controller}/views/$name.php");
+			return $this->container->loadTemplate("library/controllers/{$this->controller}/views/$name.php");
 		}
 
 		public final function setVariable($var, $value)
@@ -45,7 +45,7 @@
 
 			if(isset($loaded[$controller]))
 				return $loaded[$controller];
-			$path = "controllers/$controller/views/{$view}View.php";
+			$path = "library/controllers/$controller/views/{$view}View.php";
 			if(!file_exists($path)) {
 				throw new Exception("Controller $controller's View '$view' does not exist!<br />$path");
 			}

@@ -14,7 +14,7 @@ class Entry
 			foreach($config as $c)
 				include("site/config/$c.php");
 		} else
-			include("site/config/$c.php");
+			include("site/config/$config.php");
 	}
 
 	public function run()

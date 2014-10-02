@@ -8,6 +8,15 @@ class Entry
 		$this->db = DBO::init();
 	}
 
+	public function includeConfig($config)
+	{
+		if(is_array($config)) {
+			foreach($config as $c)
+				include("site/config/$c.php");
+		} else
+			include("site/config/$c.php");
+	}
+
 	public function run()
 	{
 		global $config;

@@ -5,6 +5,7 @@ include('base/db/dbhandler.php');
 include('base/db/dbaccessor.php');
 
 include('base/helpers/url.php');
+include('base/helpers/strings.php');
 include('base/helpers/metric.php');
 
 include('base/model/Model.php');

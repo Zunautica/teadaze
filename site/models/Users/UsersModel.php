@@ -1,8 +1,8 @@
 <?php
 
 	class UsersModel extends Model {
-		public function loaded($msg)
+		public function getUsers()
 		{
-			echo "Hello $msg";
+			return $this->table('users')->select('*');
 		}
 	}

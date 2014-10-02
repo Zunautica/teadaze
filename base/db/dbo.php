@@ -20,7 +20,6 @@ class DBO
 
 	public function query($sql)
 	{
-		echo $sql;
 		$r = $this->connection->query($sql);
 		if($r === false || $r === true)
 			return $r;
@@ -44,7 +43,7 @@ class DBO
 		foreach($values as $c => $v) {
 			$col .= "`$c`";
 			if(is_object($v))
-				$val .= $v;
+				$val .= $v->func;
 			else
 				$val .= "'".string_prepare_mysql($v)."'";
 
@@ -73,7 +72,7 @@ class DBO
 			if($v == null)
 				continue;
 			if(is_object($v))
-				$update .= "`c`={$v->func}";
+				$update .= "`$c`={$v->func}";
 			else
 				$update .= "`$c`='".string_prepare_mysql($v)."'";
 

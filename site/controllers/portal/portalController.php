@@ -13,5 +13,9 @@
 		public function dynamic(array $url)
 		{
 			$this->loadView("ajax");
+
+			$model = $this->loadModel('Users.Users');
+			$users = $model->getUsers();
+			$this->setVariable('users', json_encode_object(array('users'=>$users)));
 		}
 	}

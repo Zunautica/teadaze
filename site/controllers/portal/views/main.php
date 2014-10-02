@@ -1,5 +1,7 @@
 <?php
 echo $this->title;
 ?>
-in the times
 <input type="button" value="Test Ajax" id="test-button" />
+<div>
+<pre><?php print_r($this->users); ?></pre>
+</div>

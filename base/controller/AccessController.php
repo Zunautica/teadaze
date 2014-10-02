@@ -1,5 +1,5 @@
 <?php
 	abstract class AccessController extends Controller {
 		
-		abstract public function auth();
+		abstract protected function auth();
 	}

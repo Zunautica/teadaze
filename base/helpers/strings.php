@@ -42,6 +42,7 @@
 
 	function json_encode_object($array, $alias = null)
 	{
+		ob_start();
 		echo "{";
 		$sz = sizeof($array);
 		foreach($array as $key => $item) {
@@ -65,10 +66,12 @@
 
 		}
 		echo "}";
+		return ob_get_clean();
 	}
 
 	function json_encode_array($array, $alias = null)
 	{
+		ob_start();
 		echo "[";
 		$sz = sizeof($array);
 		foreach($array as $key => $item) {
@@ -76,10 +79,10 @@
 				$key = $alias[$key];
 
 			if(is_array($item) && is_numeric(key($item)))
-				json_encode_array($item, $alias);
+				echo json_encode_array($item, $alias);
 			else
 			if(is_array($item))
-				json_encode_object($item, $alias);
+				echo json_encode_object($item, $alias);
 			else {
 				if(is_numeric($item ))
 					echo $item;
@@ -91,6 +94,7 @@
 
 		}
 		echo "]";
+		return ob_get_clean();
 	}
 
 ?>

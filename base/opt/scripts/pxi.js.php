@@ -1,6 +1,3 @@
-/* Copyright 2014, Zunautica Initiatives Ltd.
-*  Distributed under the MIT License (http://opensource.org/licenses/MIT)
-*/
 <?php
 	header("content-type: application/javascript");
 	include('../../../base/config/config.php');
@@ -138,27 +135,4 @@ var Pxi = {
 		}
 	},
 
-	hooks: {
-		load: {
-			list: new Array(),
-
-			add: function (callback) {
-				Pxi.hooks.load.list.push(callback);
-			},
-
-			execute: function () {
-				for(var i = 0; i < Pxi.hooks.load.list.length; i++)
-					Pxi.hooks.load.list[i]();
-			}
-		}
-	},
-
-	addEventListener: function(type, callback) {
-		if(Pxi.hooks[type] === undefined)
-			return undefined;
-
-		Pxi.hooks[type].add(callback);
-	}
 }
-
-window.addEventListener('load', Pxi.hooks.load.execute);

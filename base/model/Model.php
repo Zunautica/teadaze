@@ -9,6 +9,11 @@
 			return new PTableModel($this->db, $table);
 		}
 
+		protected function query($sql)
+		{
+			return $this->db->query($sql);
+		}
+
 		public static function load($model) {
 			static $models = array();
 			$db = DBO::init();

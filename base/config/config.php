@@ -10,4 +10,7 @@
 		'auto_frame' => 'std.clear',
 		'dynamic_keyword' => 'ajax',
 		'debug' => true
-		);
+	);
+
+	$hooks = array();
+	$hooks['onrequest'] = array();

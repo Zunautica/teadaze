@@ -2,7 +2,8 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
-	abstract class Controller {
+	abstract class Controller extends ControlType
+	{
 		private $name = null;
 		private $view = null;
 		private $frame = null;
@@ -15,15 +16,6 @@
 			$this->name = $name;
 		}
 
-		protected function loadModel($model)
-		{
-			try {
-			return Model::load($model);
-			} catch(Exception $e) {
-				echo $e->getMessage();
-				die();
-			}
-		}
 
 		protected function loadView($view)
 		{
@@ -61,15 +53,15 @@
 			return $this->frame;
 		}
 
-		protected final function chainload($controller, $url)
+		protected final function chainload($controller, $target)
 		{
 			$cnt = Controller::load($controller);
-			return $cnt->init($url);
+			return $cnt->init($target);
 		}
 
-		abstract public function init(array $url);
+		abstract public function init(array $target);
 
-		public function dynamic(array $url)
+		public function dynamic(array $target)
 		{
 			return null;
 		}

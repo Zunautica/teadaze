@@ -4,6 +4,7 @@
 */
 
 include('base/config/config.php');
+include('base/base.php');
 include('base/db/dbo.php');
 include('base/db/dbaccessor.php');
 
@@ -19,4 +20,8 @@ include('base/view/TemplateContainer.php');
 include('base/view/View.php');
 include('base/view/Frame.php');
 
+include('base/controller/ControlType.php');
 include('base/controller/Controller.php');
+
+include('base/plugin/Plugin.php');
+include('base/plugin/HookLines.php');

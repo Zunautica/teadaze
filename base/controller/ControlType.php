@@ -1,7 +1,7 @@
 <?php
 	abstract class ControlType extends PXBase
 	{
-		protected final function loadModel($model)
+		protected function loadModel($model)
 		{
 			try {
 			return Model::load($model);

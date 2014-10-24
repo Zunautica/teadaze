@@ -8,7 +8,6 @@ try {
 } catch(exception $e) {
 	echo $e;
 }
-
 $etime = microtime();
 if($config['debug']) {
 	echo "<div>".peak_memory_string()."</div>";

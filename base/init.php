@@ -13,6 +13,7 @@ include('base/helpers/strings.php');
 include('base/helpers/metric.php');
 
 include('base/model/Model.php');
+include('base/model/ModelWrapper.php');
 
 include('base/view/AssetHandler.php');
 

@@ -98,4 +98,20 @@
 			$loaded[$controller] = $obj;
 			return $obj;
 		}
+
+		protected final function loadModel($model)
+		{
+			$obj = parent::loadModel($model);
+			global $hooks;
+			$pattern = get_class($this).".".get_class($this->view).".$model";
+			if(!isset($hooks[$pattern]))
+				return $obj;
+
+			return $this->loadWrapper($obj, $hooks[$pattern]);
+		}
+
+		private final function loadWrapper($model, $hooklines)
+		{
+			return new ModelWrapper($model, $hooklines);
+		}
 	}

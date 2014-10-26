@@ -30,6 +30,7 @@ function peak_memory_string()
  * @method time_us_ms($time)
  * @param float $time The microtime
  * @return integer The rounded total of milliseconds
+ */
 function time_us_ms($time)
 {
 	return round((($time)*1000000)/1000);

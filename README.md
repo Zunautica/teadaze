@@ -60,6 +60,9 @@ In /base/opt is the directory tree for a clean site. Copy that 'site' directory 
 
 When setting assets in views, the directory is relative to /site/assets/[scripts,styles]. Images are relative to root since the landing is /index.php.
 
+#### Teadaze
+
+Not one of mine, but from the excellent pun 'Around the world in a tea daze'
 
 
 ### License

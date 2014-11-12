@@ -112,18 +112,11 @@ class Entry
 		try {
 			while(!$this->runHook($target[0]."Controller", $target))
 				continue;
-
 			$controller = Controller::load($target[0]);
-			$controller = $controller->init(url_next_dir($target));
-
-			$frame = $controller->getFrame();
-			if($frame == null)
-				$frame = $config['auto_frame'];
+			$controller = $controller->runInit(url_next_dir($target));
 
 			$view = $controller->getView();
-			$frame = Frame::load($frame);
-			$frame->setView($view);
-			return $frame->show();
+			return $view->loadTemplate();
 		}
 		catch(exception $e) {
 			throw $e;

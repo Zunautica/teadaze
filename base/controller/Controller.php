@@ -102,7 +102,7 @@
 		 * @param mixed $value The value assigned to the variable
 		 * @access protected
 		 */
-		protected function setVariable($var, $value)
+		public function setVariable($var, $value)
 		{
 			if($this->view == null)
 				return;
@@ -143,6 +143,7 @@
 		 * @method setFrame(string $frame)
 		 * @param string $frame The name of the frame the controller will use
 		 * @access protected
+		 * @deprecated No longer required because of complex controllers
 		 */
 		protected final function setFrame($frame)
 		{
@@ -158,7 +159,7 @@
 		 * @method getFrame()
 		 * @access public
 		 * @return string The name of the frame template
-		 * @deprecated Current Not longer required because of complex controllers
+		 * @deprecated Not longer required because of complex controllers
 		 */
 		public final function getFrame()
 		{
@@ -216,8 +217,9 @@
 		 * if you need to. The process will be transparent.
 		 *
 		 * @todo
-		 * 	This really needs to be brought more in alignment with what
-		 *	it is doing
+		 * 	This really needs to be named more in alignment with what
+		 *	it is doing. Init is something that happens normally, not
+		 *	just on a static load.
 		 *
 		 * @method init(array $target)
 		 * @param array $target The target array to pass into the controller

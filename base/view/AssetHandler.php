@@ -79,7 +79,7 @@
 		 * @param array $merget The asset array to merge
 		 * @access public
 		 */
-		protected final function mergeAssets($merger)
+		public final function mergeAssets($merger)
 		{
 			$this->assets['scripts'] = array_merge($this->assets['scripts'], $merger['scripts']);
 			$this->assets['styles'] = array_merge($this->assets['styles'], $merger['styles']);

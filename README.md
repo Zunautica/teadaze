@@ -48,7 +48,7 @@ The only bit of bundled ORM like stuff is an abstraction of a table, callable by
 
 #### Subdomain or Root
 
-Currently only tested as functional in a root directory of a domain.
+Currently only tested as functional in a root directory of a (sub)domain.
 
 #### /base/opt/
 

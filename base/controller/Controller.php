@@ -36,6 +36,8 @@
 
 		private $access;
 
+		private $reference;
+
 		/**
 		 * When the object is instantiated, it is set it's name
 		 * @method __construct(string $name)
@@ -45,6 +47,7 @@
 		public function __construct($name)
 		{
 			$this->name = $name;
+			$this->reference = $this;
 		}
 
 
@@ -108,6 +111,29 @@
 		}
 
 		/**
+		 * Merge another controller's view into this controller's view to
+		 * create a composite view.
+		 *
+		 * When you have a composite controller, that will bring other
+		 * controllers together to create a composite view then you
+		 * can use this method to merge the views into the handling
+		 * controller
+		 *
+		 * Alternatively you could load up other views from within
+		 * the composite controller
+		 *
+		 * @method mergeView(string $var, View $view)
+		 * @param string $var The name of the template variable
+		 * @param View $View The view to merge into the controller
+		 * @access public
+		 */
+		public final function mergeView($var, $view)
+		{
+			$this->setVariable($var, $view);
+			$this->view->mergeAssets($view->getAssets());
+		}
+
+		/**
 		 * A temporary fix for setting a frame around the controller
 		 *
 		 * This method is a stand in until composite controllers are working.
@@ -132,6 +158,7 @@
 		 * @method getFrame()
 		 * @access public
 		 * @return string The name of the frame template
+		 * @deprecated Current Not longer required because of complex controllers
 		 */
 		public final function getFrame()
 		{
@@ -154,8 +181,26 @@
 		 */
 		protected final function chainload($controller, $target)
 		{
-			$cnt = Controller::load($controller);
-			return $cnt->init($target);
+			$ctrl = Controller::load($controller);
+			$this->reference = $ctrl->runInit($target);
+			return $this->reference;
+		}
+
+		/**
+		 * Run the initialisation for the controller
+		 *
+		 * This will run the controller's init method and
+		 * return the reference to the controller or it's
+		 * alias if has chainloaded other controllers
+		 *
+		 * @method runInit(array $target)
+		 * @param array $target The target array to pass into the controll
+		 * @return Controller reference, either this controller or a chainloaded controller
+		 */
+		public final function runInit(array $target)
+		{
+			$this->init($target);
+			return $this->reference;
 		}
 
 		/**
@@ -170,12 +215,15 @@
 		 * This method is where you can chainload other controllers
 		 * if you need to. The process will be transparent.
 		 *
+		 * @todo
+		 * 	This really needs to be brought more in alignment with what
+		 *	it is doing
+		 *
 		 * @method init(array $target)
 		 * @param array $target The target array to pass into the controller
-		 * @access public
-		 * @return Controller Either $this or the chainloaded controller
+		 * @access protected
 		 */
-		abstract public function init(array $target);
+		abstract protected function init(array $target);
 
 		/**
 		 * Called when a dynamic request is made on the controller

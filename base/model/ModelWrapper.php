@@ -84,7 +84,12 @@
 			$data = call_user_func_array(array($this->model, $hook), $arguments);
 			foreach($this->hooklines[$hook] as $slot) {
 				$plugin = Plugin::load($slot[0]);
-				$plugin->$slot[1]($data);
+				$sinker = array('data' => &$data, 'args' => null);
+				if(isset($slot[2]))
+					$sinker['args'] = &$slot[2];
+				else
+					$sinker['args'] = array();
+				$plugin->$slot[1]($sinker);
 			}
 			return $data;
 		}
@@ -108,7 +113,24 @@
 		private final function __hookline(&$line)
 		{
 			$line = explode(';', $line);
-			foreach($line as &$l)
-				$l = explode('::', $l);
+			foreach($line as &$l) {
+				$x = explode('::', $l);
+				$f = explode('(', $x[1]);
+				if(isset($f[1])) {
+					$args = explode(',', $f[1]);
+					$sz = sizeof($args)-1;
+					$len = strlen($args[$sz])-1;
+					if($args[$sz][$len] == ')')
+						$args[$sz] = substr($args[$sz], 0, $len);
+
+					unset($x[1]);
+					$f[1] = $args;
+					$l = array_merge($x, $f);
+					
+				} else {
+					$l = $x;
+					continue;
+				}
+			}
 		}
 	}

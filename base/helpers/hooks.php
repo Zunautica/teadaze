@@ -54,11 +54,20 @@ function controller_hook($controller, array $hookline)
  * hookline consisting of plugin1 and plugin2, and the function methodX
  * and methodY will be called respectively for each plugin
  *
+ * If you want to set the plugin to parse specific data from a row then you
+ * can specify in the method call. For example:
+ *
+ * package.plugin::methodX(rowA)
+ *
+ * or comma separated multiple rows:
+ *
+ * package.plugin::methodY(rowB,rowC)
+ *
  * An example of a full call would be:
  *
  * <code>
  * cvm_hook('MyController.mainview', 'MyModels.ModelX', array(
- * 	'modelMethod' => 'MyPlugins.PluginA::modificationMethod;MyPlugins.PluginB::formatMethod'
+ * 	'modelMethod' => 'MyPlugins.PluginA::modificationMethod(about);MyPlugins.PluginB::formatMethod'
  * ));
  * </code>
  *

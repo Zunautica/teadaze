@@ -89,6 +89,7 @@
 					$sinker['args'] = &$slot[2];
 				else
 					$sinker['args'] = array();
+
 				$plugin->$slot[1]($sinker);
 			}
 			return $data;
@@ -102,9 +103,13 @@
 		 *
 		 * package.plugin::method
 		 *
+		 * of if you want to specify columns to be processed, add them:
+		 *
+		 * package.plugin::method(column1,column2)
+		 *
 		 * or if you want more than one plugin on a hookline:
 		 *
-		 * package.plugin::method;package.plugin::method
+		 * package.plugin::method;package.plugin::method(col)
 		 *
 		 * @method __hookline(&$line)
 		 * @param array $line An array of hooklines for the model that has been wrapped

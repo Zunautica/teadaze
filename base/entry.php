@@ -140,6 +140,8 @@ class Entry
 		global $config;
 		try {
 			$config['debug'] = false;
+			while(!$this->runHook($target[0]."Controller", $target))
+				continue;
 			$controller = Controller::load($target[0]);
 			$controller->dynamic(url_next_dir($target));
 			$view = $controller->getView();

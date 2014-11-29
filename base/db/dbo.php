@@ -122,7 +122,7 @@ class DBO
 		if(!$this->query("INSERT INTO `$table` ($col) VALUES ($val)"))
 			return false;
 
-		return $this->connect->last_id;
+		return $this->connection->insert_id;
 	}
 
 	/**

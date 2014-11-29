@@ -48,7 +48,7 @@
 		*/
 		public function insert($values)
 		{
-			if(is_array($insert))
+			if(is_array($values))
 				return $this->dbo->procInsert($this->table, $values);
 
 			$sql = "INSERT INTO `{$this->table}` $values";

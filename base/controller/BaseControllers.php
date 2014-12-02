@@ -50,4 +50,22 @@ abstract class ComplexController extends Controller {
  * loaded up individually
  */
 abstract class TaskController extends Controller {
+
+	/**
+	 * Called when a dynamic request is made on the controller
+	 *
+	 * This is an optional method to overload in a child controller since
+	 * not all controllers will be handling dynamic request.
+	 *
+	 * It is called when a dynamic (ajax) request is performed and
+	 * functions in the same way as init
+	 *
+	 * @method dynamic(array $target)
+	 * @param array $target The target array to pass into the controller
+	 * @access public
+	 */
+	public function dynamic(array $target)
+	{
+		return null;
+	}
 }

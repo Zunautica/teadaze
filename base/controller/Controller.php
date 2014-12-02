@@ -35,11 +35,13 @@
 		/** @var boolean $root Sets whether the controller can be called as a root controller or has to be composite (TRUE automatically) */
 		private $root = true;
 
-		private $access;
-
+		/** @var Contoller $reference The reference to the final class after initalising */
 		private $reference;
 
+		/** @var ControllerLoader $controllerLoader The controller loader used for chainloading */
 		protected $controllerLoader = null;
+
+		/** @var PluginLoader $pluginLoader The plugin loader used for when loading a model */
 		private $pluginLoader = null;
 
 		/**
@@ -239,23 +241,6 @@
 		 */
 		abstract protected function init(array $target);
 
-		/**
-		 * Called when a dynamic request is made on the controller
-		 *
-		 * This is an optional method to overload in a child controller since
-		 * not all controllers will be handling dynamic request.
-		 *
-		 * It is called when a dynamic (ajax) request is performed and
-		 * functions in the same way as init
-		 *
-		 * @method dynamic(array $target)
-		 * @param array $target The target array to pass into the controller
-		 * @access public
-		 */
-		public function dynamic(array $target)
-		{
-			return null;
-		}
 
 		/**
 		 * Return the view loaded by the controller

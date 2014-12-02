@@ -23,6 +23,8 @@ class Entry
 	/** @var array $hooks A list of hook and their hooklines */
 	private $hooks;
 
+	private $controllerLoader = null;
+
 	/**
 	 * The method for initialising an Entry object
 	 *
@@ -36,8 +38,16 @@ class Entry
 	private function init()
 	{
 		global $hooks;
-		$this->hooks = new HookLines($hooks);
+		global $config;
+
 		$this->db = DBO::init();
+		$initialiser = new $config['initialiser']();
+		$this->controllerLoader = new $config['loaders']['controller']();
+		$pluginLoader = new $config['loaders']['plugin']();
+		$initialiser->setControllerLoader($this->controllerLoader);
+		$initialiser->setModelLoader( new $config['loaders']['model']());
+		$initialiser->setPluginLoader($pluginLoader);
+		$this->hooks = new HookLines($hooks, $pluginLoader);
 	}
 
 	/**
@@ -112,7 +122,7 @@ class Entry
 		try {
 			while(!$this->runHook($target[0]."Controller", $target))
 				continue;
-			$controller = Controller::load($target[0]);
+			$controller = $this->controllerLoader->load($target[0]);
 			$controller = $controller->runInit(url_next_dir($target));
 
 			$view = $controller->getView();
@@ -142,7 +152,7 @@ class Entry
 			$config['debug'] = false;
 			while(!$this->runHook($target[0]."Controller", $target))
 				continue;
-			$controller = Controller::load($target[0]);
+			$controller = $this->controllerLoader->load($target[0]);
 			$controller->dynamic(url_next_dir($target));
 			$view = $controller->getView();
 			if(!$view)

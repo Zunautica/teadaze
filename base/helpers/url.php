@@ -57,7 +57,7 @@ function url_next_dir(array $url)
  */
 function asset_script_url($asset)
 {
-	return "<script src=\"site/assets/scripts/$asset\" type=\"text/javascript\"></script>\n";
+	return "<script src=\"/site/assets/scripts/$asset\" type=\"text/javascript\"></script>\n";
 }
 
 /**
@@ -71,5 +71,5 @@ function asset_script_url($asset)
  */
 function asset_style_url($asset)
 {
-	return "<link href=\"site/assets/styles/$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
+	return "<link href=\"/site/assets/styles/$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
 }

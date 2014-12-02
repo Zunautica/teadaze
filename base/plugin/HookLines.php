@@ -14,6 +14,7 @@
 	{
 		/** @var array $lines A list of hooklines used by the system */
 		private $lines = array();
+		private $pluginLoader = null;
 
 		/**
 		 * This object is instantiated with a list of hooks
@@ -23,8 +24,9 @@
 		 * @param array $hooks The array of framework hooks and associated hooklines
 		 * @access public
 		 */
-		public function __construct($hooks)
+		public function __construct($hooks, GenericLoader &$pluginLoader)
 		{
+			$this->pluginLoader = &$pluginLoader;
 			foreach($hooks as $hook => $line)
 				$this->lines[$hook] = $line;
 		}
@@ -46,7 +48,7 @@
 				return;
 
 			foreach($this->lines[$hook] as $name) {
-				$plugin = Plugin::load($name);
+				$plugin = $this->pluginLoader->load($name);
 
 				$plugin->run($sinker);
 			}

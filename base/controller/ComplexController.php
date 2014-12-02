@@ -33,7 +33,7 @@ abstract class ComplexController extends Controller {
 	 * @return Controller An initialised controller object
 	 */
 	protected final function importLoad($controller, $target) {
-		$ctrl = Controller::load($controller);
+		$ctrl = $this->controllerLoader->load($controller);
 		return $ctrl->runInit($target);
 	}
 }

@@ -35,43 +35,4 @@
 		 * @access public
 		 */
 		abstract public function run(&$sinker);
-
-		/**
-		 * The static method for loading a plugin
-		 *
-		 * This method will automatically locate the plugin
-		 * and instantiate it. If it is already loaded then it
-		 * will pass back the instantiated object.
-		 *
-		 * The method expects the specified plugin to be in
-		 * 'package.plugin' format.
-		 *
-		 * @method load(string $plugin)
-		 * @param string $plugin The plugin to load in 'package.plugin' format
-		 * @access public
-		 * @return Plugin An instantiated plugin object
-		 */
-		static public function load($plugin)
-		{
-			static $plugins = array();
-			$db = DBO::init();
-
-			$atom = explode('.', $plugin);
-
-			if(isset($plugins[$plugin]))
-				return new $plugins[$plugin]();
-
-			$path = "site/plugins/{$atom[0]}/{$atom[1]}.php";
-			if(!file_exists($path)) {
-				throw new Exception("Plugin '{$plugin}' does not exist!<br />$path");
-			}
-
-			include($path);
-			$class = "{$atom[1]}Plugin";
-			$obj = new $class($db);
-			$plugins[$plugin] = $class;
-
-			return $obj;
-
-		}
 	}

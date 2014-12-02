@@ -29,6 +29,8 @@
 		/** @var array $hooklines An array of hooklines */
 		private $hooklines;
 
+		private $pluginLoader;
+
 		/**
 		* Instantiate the object with a model and hooklines automatically
 		*
@@ -37,10 +39,11 @@
 		* @param array $hooklines An array of hooklines for the wrapper to use
 		* @access public
 		*/
-		public function __construct($model, $hooklines)
+		public function __construct($model, $hooklines, $pluginLoader)
 		{
 			$this->model = $model;
 			$this->hooklines = $hooklines;
+			$this->pluginLoader = $pluginLoader;
 		}
 
 		/**
@@ -83,7 +86,7 @@
 			$this->__hookline($this->hooklines[$hook]);
 			$data = call_user_func_array(array($this->model, $hook), $arguments);
 			foreach($this->hooklines[$hook] as $slot) {
-				$plugin = Plugin::load($slot[0]);
+				$plugin = $this->pluginLoader->load($slot[0]);
 				$sinker = array('data' => &$data, 'args' => null);
 				if(isset($slot[2]))
 					$sinker['args'] = &$slot[2];

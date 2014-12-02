@@ -9,8 +9,9 @@
  * Control flavoured classes are Controllers and Plugins.
  * They share some similar behaviour which is defined here.
  */
-	abstract class ControlType extends PXBase
+	abstract class ControlType extends PXBase implements ModelLoadingInterface
 	{
+		private $modelLoader = null;
 		/**
 		 * Used to load a Model object using 'package.model'
 		 *
@@ -27,7 +28,8 @@
 		protected function loadModel($model)
 		{
 			try {
-			return Model::load($model);
+				$obj = $this->modelLoader->load($model);
+				return $obj;
 			} catch(Exception $e) {
 				echo $e->getMessage();
 				die();
@@ -50,4 +52,9 @@
 		{
 			header("Location: $url");
 		}
+
+		public final function setModelLoader(GenericLoader $modelLoader) {
+			$this->modelLoader = &$modelLoader;
+		}
+
 	}

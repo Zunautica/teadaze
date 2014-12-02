@@ -22,7 +22,7 @@
 	 * This class also acts as the loader for instances of itself
 	 * using the static load method.
 	 */
-	abstract class Model extends DBAccessor {
+	abstract class Model extends DBAccessor implements DBInterface {
 
 		/**
 		 * A method for generating a new isntance of a table model
@@ -61,45 +61,5 @@
 			return $this->db->query($sql);
 		}
 
-		/**
-		 * The static method for loading a model
-		 *
-		 * This is used to load a model object. It handles
-		 * locating the file, including and instantiating
-		 * the model object. It also tracks which models have
-		 * been loaded already
-		 *
-		 * The model is loaded in 'package.model' format, so
-		 * for example:
-		 *
-		 * 'Std.Users'
-		 *
-		 * will load the 'Users' model in the subdirectory 'Std'
-		 *
-		 * @method load(string $model)
-		 * @param string $model The name of the model in 'package.model' format
-		 * @access public
-		 * @return Model The instantiated model object
-		 */
-		public static function load($model) {
-			static $models = array();
-			$db = DBO::init();
-
-			$atom = explode('.', $model);
-
-			if(isset($models[$model]))
-				return $models[$model];
-
-			$path = "site/models/{$atom[0]}/{$atom[1]}Model.php";
-			if(!file_exists($path)) {
-				throw new Exception("Model '{$model}' does not exist!<br />$path");
-			}
-
-			include($path);
-			$class = "{$atom[1]}Model";
-			$obj = new $class($db);
-			$models[$model] = $obj;
-
-			return $obj;
-		}
+		public function setDatabase($database){}
 	}

@@ -21,6 +21,7 @@
  * are only used in a composite.
  */
 	abstract class Controller extends ControlType
+	implements ControllerLoadingInterface, PluginLoadingInterface
 	{
 		/** @var string $name The name of the instantiated Controller */
 		private $name = null;
@@ -38,6 +39,9 @@
 
 		private $reference;
 
+		protected $controllerLoader = null;
+		protected $pluginLoader = null;
+
 		/**
 		 * When the object is instantiated, it is set it's name
 		 * @method __construct(string $name)
@@ -48,6 +52,14 @@
 		{
 			$this->name = $name;
 			$this->reference = $this;
+		}
+
+		public final function setControllerLoader(GenericLoader $controllerLoader) {
+			$this->controllerLoader = &$controllerLoader;
+		}
+
+		public final function setPluginLoader(GenericLoader $pluginLoader) {
+			$this->pluginLoader = &$pluginLoader;
 		}
 
 
@@ -182,7 +194,7 @@
 		 */
 		protected final function chainload($controller, $target)
 		{
-			$ctrl = Controller::load($controller);
+			$ctrl = $this->controllerLoader->load($controller);
 			$this->reference = $ctrl->runInit($target);
 			return $this->reference;
 		}
@@ -290,37 +302,6 @@
 		}
 
 		/**
-		* Method for loading instances of Controllers
-		*
-		* This is a static method that can be called to instantiate
-		* a particular controller. It handles all the loading and
-		* configuring of the controller and passes back the 
-		* instantiated object.
-		*
-		* @method load(string $controller)
-		* @param string $controller The name of the controller to load
-		* @access public
-		* @return Controller An instance of Controller
-		*/
-		static public function load($controller)
-		{
-			static $loaded = array();
-
-			if(isset($loaded[$controller]))
-				return $loaded[$controller];
-			$path = "site/controllers/$controller/{$controller}Controller.php";
-			if(!file_exists($path)) {
-				throw new Exception("Controller '$controller' does not exist!<br />$path");
-			}
-
-			include($path);
-			$class = "{$controller}Controller";
-			$obj = new $class($controller);
-			$loaded[$controller] = $obj;
-			return $obj;
-		}
-
-		/**
 		 * Used to load a specific model
 		 *
 		 * This method loads a model. It transparently handles
@@ -362,6 +343,6 @@
 		*/
 		private final function loadWrapper($model, $hooklines)
 		{
-			return new ModelWrapper($model, $hooklines);
+			return new ModelWrapper($model, $hooklines, $this->pluginLoader);
 		}
 	}

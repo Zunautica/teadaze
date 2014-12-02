@@ -7,6 +7,8 @@
  * Loads all the headers for the framework
  */
 
+session_start();
+
 include('base/config/config.php');
 include('base/base.php');
 include('base/db/dbo.php');
@@ -16,6 +18,11 @@ include('base/helpers/url.php');
 include('base/helpers/strings.php');
 include('base/helpers/metric.php');
 include('base/helpers/hooks.php');
+
+include('base/loaders/GenericLoader.php');
+include('base/interfaces/iframework.php');
+include('base/loaders/GenericInitialiser.php');
+include('base/loaders/BaseInitialiser.php');
 
 include('base/model/Model.php');
 include('base/model/ModelWrapper.php');
@@ -32,3 +39,6 @@ include('base/controller/ComplexController.php');
 
 include('base/plugin/Plugin.php');
 include('base/plugin/HookLines.php');
+
+include('base/loaders/BaseLoaders.php');
+

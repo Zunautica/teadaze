@@ -4,6 +4,8 @@
 */
 
 /**
+ * A controller that loads up other controllers
+ *
  * These are for when you want to import different controllers and 
  * merge their views into a single controller - thus creating composite
  * views.
@@ -36,4 +38,16 @@ abstract class ComplexController extends Controller {
 		$ctrl = $this->controllerLoader->load($controller);
 		return $ctrl->runInit($target);
 	}
+}
+
+/**
+ * A controller that performs a single task
+ *
+ * They can display the contents of a news page, or act as
+ * the text editor or as a template frame etc. 
+ *
+ * These are loaded up by complex controllers or can be 
+ * loaded up individually
+ */
+abstract class TaskController extends Controller {
 }

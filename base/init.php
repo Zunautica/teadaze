@@ -36,7 +36,7 @@ include('base/view/Frame.php');
 
 include('base/controller/ControlType.php');
 include('base/controller/Controller.php');
-include('base/controller/ComplexController.php');
+include('base/controller/BaseControllers.php');
 
 include('base/plugin/Plugin.php');
 include('base/plugin/HookLines.php');

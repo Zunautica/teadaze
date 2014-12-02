@@ -40,7 +40,7 @@
 		private $reference;
 
 		protected $controllerLoader = null;
-		protected $pluginLoader = null;
+		private $pluginLoader = null;
 
 		/**
 		 * When the object is instantiated, it is set it's name

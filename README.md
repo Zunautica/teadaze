@@ -12,7 +12,7 @@ However! as a quick overview these are some of the concepts you'll find within:
 
 #### Controllers
 
-Controllers generally function in the same way as many web based MVC architectures (which is a little different from the original pattern); they load the model, load the view and pass data from the model to the view. Controllers manage their own set of views, rather than there being a repository of many views. This allows controllers to - by design - handle a particular task. Controllers also act as the destination for dynamic requests from their views.
+Controllers generally function in the same way as many web based MVC architectures (which is a little different from the original pattern); they load the model, load the view and pass data from the model to the view. Controllers manage their own set of views, rather than there being a repository of many views. This allows controllers to - by design - handle a particular task.
 
 #### Models
 
@@ -25,6 +25,10 @@ Views represent the visual presentation of the model that was loaded up by the c
 #### Complex Controllers
 
 Complex Controllers function as anchor points for creating composite views; because views are tied to controllers, if you want more than one view (or rather think of it more in terms of more than one task controller) for a page, then you need to chainload one 'primary' controller in the complex controller to handle building the composite view, then load the other task controllers and merge their views into the primary controller. This allows for top-down creation of - say - a frame to surround a particular view.
+
+#### Task Controllers
+
+Task Controllers are controllers that perform a single task - a template, an editor, displaying the latest news content etc. Task controllers also act as the end point for dynamic requests. They are loaded up by themselves or by Complex Controllers
 
 #### Plugins; Hooks, Lines and Sinkers
 

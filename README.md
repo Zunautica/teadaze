@@ -1,7 +1,7 @@
 # Teadaze
 ## MVC / HMVC hybrid
 
-This is *early* but functional stages of a MVC and sort of Hierarchical MVC hybrid PHP framework mainly built for inhouse use.
+This is certianly in the functional stages of a MVC and sort of Hierarchical MVC hybrid PHP framework mainly built for inhouse use.
 
 If anyone is interested in some of the implementationd details, it's probably best to push the source through PHPDoc to see the fairly comprehensive comments that are included.
 

@@ -1,7 +1,7 @@
 ![](base/opt/assets/teadaze.png?raw=true)
 ## MVC / HMVC hybrid
 
-This is certianly in the functional stages of a MVC and sort of Hierarchical MVC hybrid PHP framework mainly built for inhouse use.
+This is certianly in the functional stages of an H/MVC hybrid PHP framework mainly built for inhouse use.
 
 If anyone is interested in some of the implementationd details, it's probably best to push the source through PHPDoc to see the fairly comprehensive comments that are included.
 

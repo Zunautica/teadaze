@@ -1,4 +1,4 @@
-# Teadaze
+![](base/opt/assets/teadaze.png?raw=true)
 ## MVC / HMVC hybrid
 
 This is certianly in the functional stages of a MVC and sort of Hierarchical MVC hybrid PHP framework mainly built for inhouse use.

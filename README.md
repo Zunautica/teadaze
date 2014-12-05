@@ -47,10 +47,7 @@ Model Wrappers are hooked transparently onto models and their methods in what ar
 Extra routing can be handled simply by a plugin that can be attached to the onrequest hook. There is a bundled - currently extremely basic - plugin in /base/opt. Other than that - controller names act as landing points for the controller. Controllers can be locked if they are specifically designed not to be loaded up like that.
 
 Addendum: Added a wiki style router as well -  see comments for more details
-
-#### ORM
-
-The only bit of bundled ORM like stuff is an abstraction of a table, callable by models, that makes basic queries easier; That is probably going to be the extent of bundled ORM.
+upda
 
 #### Subdomain or Root
 

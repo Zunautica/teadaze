@@ -41,7 +41,7 @@ Model Wrappers are hooked transparently onto models and their methods in what ar
 
 ### Dependencies
 
->= PHP 5.1
+\>= PHP 5.1
 
 It can most likely be used on shared web hosting.
 
@@ -54,9 +54,14 @@ There is very little bundled - it's specifically an H/MVC framework. Other libra
 
 #### Routing
 
-Extra routing can be handled simply by a plugin that can be attached to the onrequest hook. There is a bundled - currently extremely basic - plugin in /base/opt. Other than that - controller names act as landing points for the controller. Controllers can be locked if they are specifically designed not to be loaded up like that.
+Extra routing can be handled simply by a plugin that can be attached to the onrequest hook. There is a bundled - currently extremely basic - plugin in /base/opt which will
+demonstrate how to place a router into the hookline. If there is a favorite router, than create an interface via a plugin. 
 
 Addendum: Added a wiki style router as well -  see comments for more details
+
+Other than that - controller names act as landing points for the controller. Controllers can be locked if they are specifically designed not to be loaded up like that.
+
+
 
 #### Subdomain or Root
 

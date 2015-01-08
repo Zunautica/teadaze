@@ -3,7 +3,7 @@
 
 This is certianly in the functional stages of an H/MVC hybrid PHP framework mainly built for inhouse use.
 
-If anyone is interested in some of the implementationd details, the source includes fairly comprehensive comments. You can see the generated documentation at http://teadaze.zunautica.org/index.htm.
+If anyone is interested in some of the implementation details, the source includes fairly comprehensive comments. You can see the generated documentation at http://teadaze.zunautica.org.
 
 However! as a quick overview these are some of the concepts you'll find within:
 

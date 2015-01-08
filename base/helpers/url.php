@@ -47,9 +47,10 @@ function url_next_dir(array $url)
 }
 
 /**
- * A function to quickly encode an HTML <script> element for a given script asset with respect to the framework directory
+ * A function to quickly encode an HTML <script> element for a given script asset with respect to the framework directory.
  *
- * Use this function to quickly encode a script's path in the HTML element
+ * Use this function to quickly encode a script's path in the HTML element.
+ * If it starts with http:// then it is assumed that the asset is seeded.
  *
  * @method asset_script_url(string $asset)
  * @param string $asset The path to the asset, relative to site/assets/scripts
@@ -67,6 +68,7 @@ function asset_script_url($asset)
  * A function to quickly encode an HTML <link> element for given style asset with respect to the framework directory
  *
  * Use this function to quickly encode a styles's path in the HTML element
+ * If it starts with http:// then it is assumed that the asset is seeded.
  *
  * @method asset_style_url(string $asset)
  * @param string $asset The path to the asset, relative to site/assets/styles

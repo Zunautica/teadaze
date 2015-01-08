@@ -13,46 +13,55 @@
 	abstract class PXBase
 	{
 		/**
-		* Used to get a $_POST variable
+		* Used to get a $_POST variable. Leaving $var blank returns $_POST
 		*
 		* @method _post(string $var)
 		* @param string $var The variable to retrieve
 		* @access protected
 		* @return string|null The value of the variable or null if it is not set
 		*/
-		final protected function _post($var)
+		final protected function _post($var = null)
 		{
+			if($var == null)
+				return $_POST;
+
 			return isset($_POST[$var]) ? $_POST[$var] : null;
 		}
 
 		/**
-		* Used to get a $_GET variable
+		* Used to get a $_GET variable. Leaving $var blank returns $_GET
 		*
 		* @method _get(string $var)
 		* @param string $var The variable to retrieve
 		* @access protected
 		* @return string|null The value of the variable or null if it is not set
 		*/
-		final protected function _get($var)
+		final protected function _get($var = null)
 		{
+			if($var == null)
+				return $_GET;
+
 			return (isset($_GET[$var])) ? $_GET[$var] : null;
 		}
 
 		/**
-		* Used to get a $_SESSION variable
+		* Used to get a $_SESSION variable. Leaving $var blank returns $_SESSION
 		*
 		* @method _session(string $var)
 		* @param string $var The variable to retrieve
 		* @access protected
 		* @return string|null The value of the variable or null if it is not set
 		*/
-		final protected function _session($var)
+		final protected function _session($var = null)
 		{
+			if($var == null)
+				return $_SESSION;
+
 			return (isset($_SESSION[$var])) ? $_SESSION[$var] : null;
 		}
 
 		/**
-		 * Used to set a $_SESSION variable
+		 * Used to set a $_SESSION variable. Setting $var as null unsets the variable
 		 *
 		 * @method _sessionSet(string $var, mixed $value)
 		 * @param string $var The name of the variable to set
@@ -62,6 +71,9 @@
 
 		final protected function _sessionSet($var, $value)
 		{
+			if($value === null)
+				unset($_SESSION[$var]);
+
 			$_SESSION[$var] = $value;
 		}
 

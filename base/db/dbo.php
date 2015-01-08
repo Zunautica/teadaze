@@ -105,7 +105,7 @@ class DBO
 	public function procInsert($table, array $values)
 	{
 		$col = $val = "";
-		$sz = sizeof($table);
+		$sz = sizeof($values);
 		foreach($values as $c => $v) {
 			$col .= "`$c`";
 			if(is_object($v))

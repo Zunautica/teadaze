@@ -103,3 +103,14 @@
 			return (file_exists("site/extern/$path")) ? include("site/extern/$path") : false;
 		}
 	}
+
+	class CallbackHookable {
+		public function setCallback($event, $callback)
+		{
+			$event = "{$event}CB";
+			if(!property_exists($this, $event))
+				return;
+
+			$this->$event = $callback;
+		}
+	}

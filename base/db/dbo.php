@@ -8,7 +8,7 @@
  * This handles the communication with a DB and also has built in methods 
  * for quickly generating basic queries without much overhead.
  */
-class DBO
+class DBO extends CallbackHookable
 {
 	/** @var mysqli $connection The MySQLi Connection object */
 	private $connection = null;
@@ -16,8 +16,8 @@ class DBO
 	/** @var DBO $dbo The singleton DBO object */
 	private static $dbo = null;
 
-	/** @var DBO $dbo The singleton DBO object */
-	private $onqueryCB = null;
+	/** @var [String|Array] The callback for the onquery Event */
+	protected $onqueryCB = null;
 
 	/**
 	 * Connect to the database using the credentials set in config
@@ -86,14 +86,6 @@ class DBO
 		return $rows;
 	}
 
-	public function setCallback($event, $callback)
-	{
-		$event = "{$event}CB";
-		if(!property_exists($this, $event))
-			return;
-
-		$this->$event = $callback;
-	}
 
 	/**
 	 * A processed INSERT generator

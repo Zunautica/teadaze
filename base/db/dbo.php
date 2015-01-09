@@ -16,6 +16,9 @@ class DBO
 	/** @var DBO $dbo The singleton DBO object */
 	private static $dbo = null;
 
+	/** @var DBO $dbo The singleton DBO object */
+	private $onqueryCB = null;
+
 	/**
 	 * Connect to the database using the credentials set in config
 	 *
@@ -64,6 +67,9 @@ class DBO
 	 */
 	public function query($sql)
 	{
+		if($this->onqueryCB) // This is the debugging hook
+			call_user_func($this->onqueryCB, $sql);
+
 		$r = $this->connection->query($sql);
 		if($r === false || $r === true)
 			return $r;
@@ -78,6 +84,15 @@ class DBO
 			$rows[] = $t;
 		$r->close();
 		return $rows;
+	}
+
+	public function setCallback($event, $callback)
+	{
+		$event = "{$event}CB";
+		if(!property_exists($this, $event))
+			return;
+
+		$this->$event = $callback;
 	}
 
 	/**

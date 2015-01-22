@@ -40,12 +40,13 @@ class Entry
 		global $hooks;
 		global $config;
 
-		if($config['db'] != '')
+		if($config['db'] != '') {
 			$this->db = DBO::init();
 
-		/* debugging hook - not necessary */
-		if(isset($hooks['dbo.onquery']))
+			/* debugging hook - not necessary */
+			if(isset($hooks['dbo.onquery']))
 			$this->db->setCallback('onquery', $hooks['dbo.onquery']);
+		}
 
 		$initialiser = new $config['initialiser']();
 		$this->controllerLoader = new $config['loaders']['controller']();

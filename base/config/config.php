@@ -1,4 +1,5 @@
 <?php
+namespace Teadaze;
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
  */
@@ -16,11 +17,11 @@
 		'auto_control' => 'portal',
 		'dynamic_keyword' => 'ajax',
 		'debug' => true,
-		'initialiser' => 'BaseInitialiser',
+		'initialiser' => '\Teadaze\BaseInitialiser',
 		'loaders' => array(
-			'controller' => 'ControllerLoader',
-			'model' => 'ModelLoader',
-			'plugin' => 'PluginLoader'
+			'controller' => '\Teadaze\ControllerLoader',
+			'model' => '\Teadaze\ModelLoader',
+			'plugin' => '\Teadaze\PluginLoader'
 		)
 	);
 

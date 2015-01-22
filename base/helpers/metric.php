@@ -2,7 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
-
+namespace Teadaze;
 /**
  * A function for converting the peak memory usage to a string
  *

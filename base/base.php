@@ -2,7 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
  */
-
+namespace Teadaze;
 /**
  * The abstract base for many classes which includes useful methods
  *
@@ -10,7 +10,7 @@
  * functionality like accessing request variables or loading up other
  * files from the system
  */
-	abstract class PXBase
+	abstract class Base
 	{
 		/**
 		* Used to get a $_POST variable. Leaving $var blank returns $_POST

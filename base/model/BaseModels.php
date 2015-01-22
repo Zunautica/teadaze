@@ -2,6 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
+namespace Teadaze;
 
 include('TableModel.php');
 /**
@@ -35,7 +36,7 @@ implements DBInterface {
 	 * @return PTableModel The newly instantiated Table Model
 	 */
 	protected function table($table) {
-		return new PXTableModel($this->db, $table);
+		return new TableModel($this->db, $table);
 	}
 
 	/**

@@ -2,7 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
-
+namespace Teadaze;
 include('base/init.php');
 
 /**

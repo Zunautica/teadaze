@@ -1,5 +1,5 @@
 <?php
-
+namespace Teadaze;
 /**
  * A function to quickly add a framework hook
  *

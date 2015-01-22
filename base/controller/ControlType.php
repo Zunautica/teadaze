@@ -2,14 +2,14 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
-
+namespace Teadaze;
 /**
  * The abstract class for control flavoured classes
  *
  * Control flavoured classes are Controllers and Plugins.
  * They share some similar behaviour which is defined here.
  */
-	abstract class ControlType extends PXBase implements ModelLoadingInterface
+	abstract class ControlType extends Base implements ModelLoadingInterface
 	{
 		private $modelLoader = null;
 		/**

@@ -2,7 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
  */
-
+namespace Teadaze;
 /**
  * A function to quickly generate an array of subdirectories from a given URL
  *

@@ -2,7 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
-
+namespace Teadaze;
 /**
  * The abstract class for an object initialiser
  *
@@ -36,7 +36,9 @@ abstract class GenericInitialiser {
 	 */
 	public function init($obj) {
 		$impl = class_implements($obj);
-		foreach($impl as $k => $v)
+		foreach($impl as $k => $v) {
+			$k = str_replace('\\', '_', $k);
 			$this->$k($obj);
+		}
 	}
 }

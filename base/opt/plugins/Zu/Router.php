@@ -10,7 +10,7 @@
 	 *
 	 * `$rtable['ROUTE_ALIAS'] = 'CONTROLLER'`
 	 */
-	class RouterPlugin extends Plugin
+	class RouterPlugin extends \Teadaze\Plugin
 	{
 		public function run(&$sinker)
 		{

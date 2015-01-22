@@ -36,7 +36,7 @@
  * then the signal goes directly to the destination controller (Since the controller is
  * handling the specific request).
  */
-	class WSRouterPlugin extends Plugin
+	class WSRouterPlugin extends \Teadaze\Plugin
 	{
 		public function run(&$sinker)
 		{

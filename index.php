@@ -1,7 +1,7 @@
 <?php
 $stime = microtime();
 include('base/entry.php');
-$entry = new Entry();
+$entry = new \Teadaze\Entry();
 include('site/entry.php');
 try {
 	echo $entry->run();

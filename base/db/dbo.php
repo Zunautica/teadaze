@@ -2,6 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
  */
+namespace Teadaze;
 /**
  * The singleton MySQL object for handling communication with the database
  *
@@ -32,7 +33,7 @@ class DBO extends CallbackHookable
 	public function connect()
 	{
 		global $config;
-		$this->connection = new mysqli('localhost', $config['dbuser'], $config['dbpass'], $config['db']);
+		$this->connection = new \mysqli('localhost', $config['dbuser'], $config['dbpass'], $config['db']);
 		if($this->connection->connect_errno)
 			die("Failed to connection: " . $this->connection->connect_error);
 	}

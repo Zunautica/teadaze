@@ -2,7 +2,7 @@
 /* Copyright 2014, Zunautica Initiatives Ltd.
 *  Distributed under the MIT License (http://opensource.org/licenses/MIT)
 */
-
+namespace Teadaze;
 /**
  * The Base interface based initialiser object for the framework
  * 
@@ -43,7 +43,8 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	 * @param &$obj reference to client object
 	 * @access protected
 	 */
-	protected final function DBInterface($obj) {
+	protected final function Teadaze_DBInterface($obj) {
+		
 		if(!$this->db)
 			$this->db = DBO::init();
 
@@ -57,7 +58,7 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	 * @param &$obj reference to client object
 	 * @access protected
 	 */
-	protected final function ModelLoadingInterface($obj) {
+	protected final function Teadaze_ModelLoadingInterface($obj) {
 		$obj->setModelLoader($this->modelLoader);
 	}
 
@@ -68,7 +69,7 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	 * @param &$obj reference to client object
 	 * @access protected
 	 */
-	protected final function ControllerLoadingInterface($obj) {
+	protected final function Teadaze_ControllerLoadingInterface($obj) {
 		$obj->setControllerLoader($this->controllerLoader);
 	}
 
@@ -79,7 +80,7 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	 * @param &$obj reference to client object
 	 * @access protected
 	 */
-	protected final function PluginLoadingInterface($obj) {
+	protected final function Teadaze_PluginLoadingInterface($obj) {
 		$obj->setPluginLoader($this->pluginLoader);
 	}
 }

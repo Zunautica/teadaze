@@ -41,7 +41,7 @@ Model Wrappers are hooked transparently onto models and their methods in what ar
 
 ### Dependencies
 
-\>= PHP 5.1
+\>= PHP 5.3
 
 It can most likely be used on shared web hosting.
 

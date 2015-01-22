@@ -40,7 +40,8 @@ class Entry
 		global $hooks;
 		global $config;
 
-		$this->db = DBO::init();
+		if($config['db'] != '')
+			$this->db = DBO::init();
 
 		/* debugging hook - not necessary */
 		if(isset($hooks['dbo.onquery']))

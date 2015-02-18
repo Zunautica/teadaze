@@ -16,10 +16,10 @@ namespace Teadaze;
  */
 class BaseInitialiser extends GenericInitialiser
 implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInterface {
-	private $modelLoader;
-	private $controllerLoader;
-	private $pluginLoader;
-	private $db = null;
+	protected $modelLoader;
+	protected $controllerLoader;
+	protected $pluginLoader;
+	protected $db = null;
 
 	public final function setControllerLoader(GenericLoader $obj) {
 		$obj->setInitialiser($this);

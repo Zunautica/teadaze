@@ -60,6 +60,9 @@ function asset_script_url($asset)
 {
 	if(isset($asset[7]) && substr($asset, 0, 7) == 'http://')
 		return "<script src=\"$asset\" type=\"text/javascript\"></script>\n";
+	else
+	if(isset($asset[8]) && substr($asset, 0, 8) == 'https://')
+		return "<script src=\"$asset\" type=\"text/javascript\"></script>\n";
 
 	return "<script src=\"/site/assets/scripts/$asset\" type=\"text/javascript\"></script>\n";
 }
@@ -77,6 +80,9 @@ function asset_script_url($asset)
 function asset_style_url($asset)
 {
 	if(isset($asset[7]) && substr($asset, 0, 7) == 'http://')
+		return "<link href=\"$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
+	else
+	if(isset($asset[8]) && substr($asset, 0, 8) == 'https://')
 		return "<link href=\"$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";
 
 	return "<link href=\"/site/assets/styles/$asset\" type=\"text/css\" rel=\"stylesheet\" />\n";

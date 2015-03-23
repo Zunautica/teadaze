@@ -33,6 +33,9 @@ class DBO extends CallbackHookable
 	public function connect()
 	{
 		global $config;
+		if($config['db'] == "")
+			return;
+
 		$this->connection = new \mysqli('localhost', $config['dbuser'], $config['dbpass'], $config['db']);
 		if($this->connection->connect_errno)
 			die("Failed to connection: " . $this->connection->connect_error);

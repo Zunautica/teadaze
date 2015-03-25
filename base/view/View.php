@@ -59,7 +59,7 @@ abstract class View extends AssetHandler
 	public function loadTemplate()
 	{
 		if($this->template == "")
-			throw new Exception("Template not set in ".get_class($this));
+			throw new \Exception("Template not set in ".get_class($this));
 
 		return $this->includeTemplate($this->template);
 	}
@@ -170,7 +170,7 @@ abstract class View extends AssetHandler
 			return $loaded[$controller];
 		$path = "site/controllers/$controller/views/{$view}View.php";
 		if(!file_exists($path)) {
-			throw new Exception("Controller $controller's View '$view' does not exist!<br />$path");
+			throw new \Exception("Controller $controller's View '$view' does not exist!<br />$path");
 		}
 
 		include($path);

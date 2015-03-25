@@ -34,7 +34,7 @@ class ControllerLoader extends GenericLoader {
 			return $loaded[$controller];
 		$path = "site/controllers/$controller/{$controller}Controller.php";
 		if(!file_exists($path)) {
-			throw new Exception("Controller '$controller' does not exist!<br />$path");
+			throw new \Exception("Controller '$controller' does not exist!<br />$path");
 		}
 
 		include($path);
@@ -85,7 +85,7 @@ class ModelLoader extends GenericLoader {
 
 		$path = "site/models/{$atom[0]}/{$atom[1]}Model.php";
 		if(!file_exists($path)) {
-			throw new Exception("Model '{$model}' does not exist!<br />$path");
+			throw new \Exception("Model '{$model}' does not exist!<br />$path");
 		}
 
 		include($path);
@@ -130,7 +130,7 @@ class PluginLoader extends GenericLoader {
 
 		$path = "site/plugins/{$atom[0]}/{$atom[1]}.php";
 		if(!file_exists($path)) {
-			throw new Exception("Plugin '{$plugin}' does not exist!<br />$path");
+			throw new \Exception("Plugin '{$plugin}' does not exist!<br />$path");
 		}
 
 		include($path);

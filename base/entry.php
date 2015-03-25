@@ -105,7 +105,7 @@ class Entry
 
 			return $this->runStatic($url);
 		} catch (exception $e) {
-			throw new Exception("<strong>Error on run()</strong><br />$e");
+			throw new \Exception("<strong>Error on run()</strong><br />$e");
 			return null;
 		}
 
@@ -198,7 +198,7 @@ class Entry
 			}
 
 		} catch (exception $e) {
-			throw new Exception("<strong>Error running hook</strong><br />$e");
+			throw new \Exception("<strong>Error running hook</strong><br />$e");
 		}
 
 		return true;

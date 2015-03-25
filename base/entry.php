@@ -160,7 +160,7 @@ class Entry
 			while(!$this->runHook($target[0]."Controller", $target))
 				continue;
 			$controller = $this->controllerLoader->load($target[0]);
-			$controller->dynamic(url_next_dir($target));
+			$controller = $controller->dynamic(url_next_dir($target));
 			$view = $controller->getView();
 			if(!$view)
 				return null;

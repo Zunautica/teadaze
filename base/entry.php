@@ -160,7 +160,7 @@ class Entry
 			while(!$this->runHook($target[0]."Controller", $target))
 				continue;
 			$controller = $this->controllerLoader->load($target[0]);
-			$controller = $controller->dynamic(url_next_dir($target));
+			$controller = $controller->runDynamic(url_next_dir($target));
 			$view = $controller->getView();
 			if(!$view)
 				return null;
@@ -190,9 +190,14 @@ class Entry
 	private function runHook($hook, &$target = null)
 	{
 		try {
+			global $config;
 			$sinker = array( 'target' => $target );
 			$this->hooks->run($hook, $sinker);
-			if($target && $sinker['target'][0] != $target[0]) {
+			$ref = 0;
+			if($target[0] == $config['dynamic_keyword'])
+				$ref = 1;
+
+			if($target && $sinker['target'][$ref] != $target[$ref]) {
 				$target = $sinker['target'];
 				return false;
 			}

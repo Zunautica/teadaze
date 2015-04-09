@@ -219,6 +219,23 @@ namespace Teadaze;
 		}
 
 		/**
+		 * Run the dynamic init for the controller
+		 *
+		 * This will run the controller's dynamic method and
+		 * return the reference to the controller or it's
+		 * alias if has chainloaded other controllers
+		 *
+		 * @method runInit(array $target)
+		 * @param array $target The target array to pass into the controll
+		 * @return Controller reference, either this controller or a chainloaded controller
+		 */
+
+		public final function runDynamic(array $target) {
+			$this->dynamic($target);
+			return $this->reference;
+		}
+
+		/**
 		 * Used when the controller requires instantiation.
 		 * 
 		 * This method is defined by child object and is called

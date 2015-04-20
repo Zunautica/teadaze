@@ -97,8 +97,8 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	 */
 	protected function miss($obj, $interface) {
 		$atoms = explode('\\', $interface);
-		$method = end($atoms);
-		$v = new \ReflectionParameter(array(get_class($obj), "set{$method}"), 0);
+		$method = "set".end($atoms);
+		$v = new \ReflectionParameter(array(get_class($obj), $method), 0);
 		$c = $v->__toString();
 		$ref = explode(" ",$c)[4];
 		if(preg_match('/Model$/', $ref, $d) == 1) {
@@ -106,7 +106,8 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 				$atoms = array_slice($atoms, 0, -1);
 				$ref = implode('.',$atoms).".".substr($ref, 0,-5);
 			}
-			$this->modelLoader->load($ref);
+			$m = $this->modelLoader->load($ref);
+			$obj->$method($m);
 		} else 
 		if(preg_match('/Plugin$/', $ref) == 1) {
 			if(isset($atoms[1]))

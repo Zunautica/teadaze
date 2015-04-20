@@ -14,7 +14,7 @@ namespace Teadaze;
 		'dbuser' => '',
 		'dbpass' => '',
 		'db' => '',
-		'auto_control' => 'portal',
+		'auto_control' => 'home',
 		'dynamic_keyword' => 'ajax',
 		'debug' => true,
 		'initialiser' => '\Teadaze\BaseInitialiser',

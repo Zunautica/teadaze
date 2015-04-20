@@ -102,8 +102,10 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 		$c = $v->__toString();
 		$ref = explode(" ",$c)[4];
 		if(preg_match('/Model$/', $ref, $d) == 1) {
-			if(isset($atoms[1]))
-				$ref = "{$atoms[0]}.".substr($ref, 0,-5);
+			if(isset($atoms[1])) {
+				$atoms = array_slice($atoms, 0, -1);
+				$ref = implode('.',$atoms).".".substr($ref, 0,-5);
+			}
 			$this->modelLoader->load($ref);
 		} else 
 		if(preg_match('/Plugin$/', $ref) == 1) {

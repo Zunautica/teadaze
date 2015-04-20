@@ -56,6 +56,8 @@ class TemplateContainer {
 	 * @return string A parsed template
 	 */
 	public function loadTemplate($t__path) {
+		if(!file_exists($t__path))
+			throw new \Exception("Template $t__path does not exist");
 		ob_start();
 		include($t__path);
 		return ob_get_clean();

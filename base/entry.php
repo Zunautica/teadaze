@@ -134,7 +134,7 @@ class Entry
 
 			$view = $controller->getView();
 			if(!$view)
-				throw new \Exception("No view loaded");
+				throw new \Exception("No view loaded from {$target[0]}");
 
 			return $view->loadTemplate();
 		}

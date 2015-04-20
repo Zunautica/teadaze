@@ -1,4 +1,3 @@
-site/*
 *.kdev4
 *.tar.gz
-site
+TZF*

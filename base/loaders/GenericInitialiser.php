@@ -37,8 +37,15 @@ abstract class GenericInitialiser {
 	public function init($obj) {
 		$impl = class_implements($obj);
 		foreach($impl as $k => $v) {
-			$k = str_replace('\\', '_', $k);
-			$this->$k($obj);
+			$m = str_replace('\\', '_', $k);
+			if(method_exists($this, $m))
+				$this->$m($obj);
+			else
+				$this->miss($obj, $k);
 		}
+	}
+
+	protected function miss($obj, $interface) {
+		throw new Exception("Cannot initialise object with interface $interface");
 	}
 }

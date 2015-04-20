@@ -10,6 +10,7 @@
 session_start();
 
 include('base/config/config.php');
+include('base/config/autoload.php');
 include('base/base.php');
 include('base/db/dbo.php');
 include('base/db/dbaccessor.php');

@@ -133,6 +133,9 @@ class Entry
 			$controller = $controller->runInit(url_next_dir($target));
 
 			$view = $controller->getView();
+			if(!$view)
+				throw new \Exception("No view loaded");
+
 			return $view->loadTemplate();
 		}
 		catch(exception $e) {

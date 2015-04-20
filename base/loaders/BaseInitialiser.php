@@ -84,6 +84,17 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 		$obj->setPluginLoader($this->pluginLoader);
 	}
 
+	/**
+	 * Attempt an unimplemented initialisation for an object
+	 *
+	 * This will attempt to init an object based on the interface
+	 * and its namespace and the type hint
+	 *
+	 * @method miss($obj, $interface)
+	 * @param $obj The object that is being initialised
+	 * @param $interface The interface being loaded
+	 * @access protected
+	 */
 	protected function miss($obj, $interface) {
 		$atoms = explode('\\', $interface);
 		$method = end($atoms);
@@ -99,6 +110,8 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 			if(isset($atoms[1]))
 				$ref = "{$atoms[0]}.".substr($ref, 0,-5);
 			$this->controllerLoader->load($ref);
+		} else {
+			throw new Exception("Cannot initialise object with interface $interface");
 		}
 		
 	}

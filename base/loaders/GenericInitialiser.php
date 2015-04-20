@@ -45,6 +45,17 @@ abstract class GenericInitialiser {
 		}
 	}
 
+	/**
+	 * Generic miss method
+	 *
+	 * This will throw an exception if the method is not implemented
+	 * in the class. This will probably never be called.
+	 *
+	 * @method miss($obj, $interface)
+	 * @param $obj The object that is being initialised
+	 * @param $interface The interface being loaded
+	 * @access protected
+	 */
 	protected function miss($obj, $interface) {
 		throw new Exception("Cannot initialise object with interface $interface");
 	}

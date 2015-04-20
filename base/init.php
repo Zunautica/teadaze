@@ -27,6 +27,7 @@ include('base/loaders/BaseInitialiser.php');
 
 include('base/model/Model.php');
 include('base/model/BaseModels.php');
+include('base/model/ModelPresenter.php');
 include('base/model/ModelWrapper.php');
 
 include('base/view/AssetHandler.php');

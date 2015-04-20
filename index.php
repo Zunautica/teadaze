@@ -10,8 +10,8 @@ try {
 }
 $etime = microtime();
 if($config['debug']) {
-	echo "<div>".peak_memory_string()."</div>";
-	echo "<div>".time_us_ms($etime-$stime)."ms</div>";
+	echo "<div>".Teadaze\peak_memory_string()."</div>";
+	echo "<div>".Teadaze\time_us_ms($etime-$stime)."ms</div>";
 }
 
 

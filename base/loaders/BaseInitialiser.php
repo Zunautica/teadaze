@@ -83,4 +83,24 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	protected final function Teadaze_PluginLoadingInterface($obj) {
 		$obj->setPluginLoader($this->pluginLoader);
 	}
+
+	protected function miss($obj, $interface) {
+		$atoms = explode('\\', $interface);
+		$method = end($atoms);
+		$v = new \ReflectionParameter(array(get_class($obj), "set{$method}"), 0);
+		$c = $v->__toString();
+		$ref = explode(" ",$c)[4];
+		if(preg_match('/Model$/', $ref, $d) == 1) {
+			if(isset($atoms[1]))
+				$ref = "{$atoms[0]}.".substr($ref, 0,-5);
+			$this->modelLoader->load($ref);
+		} else 
+		if(preg_match('/Plugin$/', $ref) == 1) {
+			if(isset($atoms[1]))
+				$ref = "{$atoms[0]}.".substr($ref, 0,-5);
+			$this->controllerLoader->load($ref);
+		}
+		
+	}
+
 }

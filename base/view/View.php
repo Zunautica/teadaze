@@ -147,36 +147,4 @@ abstract class View extends AssetHandler
 	{
 		$this->container->__set($var, $value);
 	}
-
-	/**
-	 * Load up an instance of a view handled by a particular controller
-	 *
-	 * This is a static method that is used to load up a view. I feel it
-	 * makes it easier to just say View::load since that is what you
-	 * want to do. The method handles locating the correct file and
-	 * keeps track of which views have already been loaded.
-	 *
-	 * @method load(string $controller, string $view)
-	 * @param string $controller The name of the handling controller
-	 * @param string $view The name of the view to load
-	 * @access public
-	 * @return View An object of a class inheritting View
-	 */
-	static public function load($controller, $view)
-	{
-		static $loaded = array();
-
-		if(isset($loaded[$controller]))
-			return $loaded[$controller];
-		$path = "site/controllers/$controller/views/{$view}View.php";
-		if(!file_exists($path)) {
-			throw new \Exception("Controller $controller's View '$view' does not exist!<br />$path");
-		}
-
-		include($path);
-		$class = "{$view}View";
-		$obj = new $class($controller);
-		$loaded[$controller] = $obj;
-		return $obj;
-	}
 }

@@ -1,7 +1,7 @@
 ![](base/opt/assets/teadaze.png?raw=true)
 ## MVC / HMVC hybrid
 
-This is Hierarchical/Model-View-Controller framework for PHP. As a base it is fairly in size, fairly fast and unopinionated.
+This is Hierarchical/Model-View-Controller framework for PHP. As a base it is fairly small in size, fairly fast and unopinionated.
 
 If anyone is interested in some of the implementation details, the source includes fairly comprehensive comments. You can see the generated documentation at http://teadaze.zunautica.org.
 

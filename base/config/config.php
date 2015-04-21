@@ -21,7 +21,8 @@ namespace Teadaze;
 		'loaders' => array(
 			'controller' => '\Teadaze\ControllerLoader',
 			'model' => '\Teadaze\ModelLoader',
-			'plugin' => '\Teadaze\PluginLoader'
+			'plugin' => '\Teadaze\PluginLoader',
+			'view' => '\Teadaze\ViewLoader'
 		)
 	);
 

@@ -53,6 +53,7 @@ class Entry
 		$pluginLoader = new $config['loaders']['plugin']();
 		$initialiser->setControllerLoader($this->controllerLoader);
 		$initialiser->setModelLoader( new $config['loaders']['model']());
+		$initialiser->setViewLoader( new $config['loaders']['view']());
 		$initialiser->setPluginLoader($pluginLoader);
 		$this->hooks = new HookLines($hooks, $pluginLoader);
 	}

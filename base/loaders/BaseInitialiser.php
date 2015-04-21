@@ -15,10 +15,11 @@ namespace Teadaze;
  * by the framework entry object.
  */
 class BaseInitialiser extends GenericInitialiser
-implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInterface {
+implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInterface, ViewLoadingInterface {
 	protected $modelLoader;
 	protected $controllerLoader;
 	protected $pluginLoader;
+	protected $viewLoader;
 	protected $db = null;
 
 	public final function setControllerLoader(GenericLoader $obj) {
@@ -34,6 +35,11 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	public final function setPluginLoader(GenericLoader $obj) {
 		$obj->setInitialiser($this);
 		$this->pluginLoader = &$obj;
+	}
+
+	public final function setViewLoader(GenericLoader $obj) {
+		$obj->setInitialiser($this);
+		$this->viewLoader = &$obj;
 	}
 
 	/**
@@ -82,6 +88,17 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 	 */
 	protected final function Teadaze_PluginLoadingInterface($obj) {
 		$obj->setPluginLoader($this->pluginLoader);
+	}
+
+	/**
+	 * Dependency Injector for ViewLoading objects
+	 *
+	 * @method ViewLoadingInterface(&$obj)
+	 * @param &$obj reference to client object
+	 * @access protected
+	 */
+	protected final function Teadaze_ViewLoadingInterface($obj) {
+		$obj->setViewLoader($this->viewLoader);
 	}
 
 	/**

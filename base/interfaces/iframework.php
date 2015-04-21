@@ -58,3 +58,18 @@ interface PluginLoadingInterface {
 	 */
 	public function setPluginLoader(GenericLoader $pluginLoader);
 }
+
+/**
+ * Dependency Interface for objects that will load views
+ */
+
+interface ViewLoadingInterface {
+	/**
+	 * Set the ViewLoader in the object
+	 *
+	 * @method setViewLoader(GenericLoader $viewLoader)
+	 * @param GenericLoader $viewLoader The view loader object to pass in
+	 * @access public
+	 */
+	public function setViewLoader(GenericLoader $viewLoader);
+}

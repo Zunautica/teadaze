@@ -141,3 +141,45 @@ class PluginLoader extends GenericLoader {
 		return $obj;
 	}
 }
+
+/**
+ * The loader object for views
+ *
+ * The loader will automatically send the newly created
+ * object through the initialiser.
+ */
+class ViewLoader extends GenericLoader {
+	/**
+	 * The method for loading a view
+	 *
+	 * This method will load the view from a particular
+	 * controller
+	 *
+	 * The method expects the specified plugin to be in
+	 * 'package.plugin' format.
+	 *
+	 * @method load(string $view)
+	 * @param string $view The plugin to load in 'controller.view' format
+	 * @access public
+	 * @return View An instantiated view object
+	 */
+	public function load($view) {
+		static $views = array();
+		$atom = explode('.', $view);
+
+		if(isset($views[$view]))
+			return new $views[$view]();
+		
+		$path = "site/controllers/{$atom[0]}/views/{$atom[1]}View.php";
+		if(!file_exists($path)) {
+			throw new \Exception("View '{$view}' does not exist!<br />$path");
+		}
+
+		include($path);
+		$class = "{$atom[1]}View";
+		$obj = new $class();
+		$views[$view] = $class;
+		$this->initialise($obj);
+		return $obj;
+	}
+}

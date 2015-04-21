@@ -177,7 +177,7 @@ class ViewLoader extends GenericLoader {
 
 		include($path);
 		$class = "{$atom[1]}View";
-		$obj = new $class();
+		$obj = new $class($atom[0]);
 		$views[$view] = $class;
 		$this->initialise($obj);
 		return $obj;

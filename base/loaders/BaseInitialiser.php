@@ -131,9 +131,10 @@ implements ModelLoadingInterface, ControllerLoadingInterface, PluginLoadingInter
 				$ref = "{$atoms[0]}.".substr($ref, 0,-5);
 			$this->controllerLoader->load($ref);
 		} else {
-			throw new Exception("Cannot initialise object with interface $interface");
+			throw new \Exception("Cannot initialise object with interface $interface");
 		}
 		
 	}
+
 
 }

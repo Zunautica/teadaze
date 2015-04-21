@@ -24,6 +24,8 @@ namespace Teadaze;
  * has to have methods for each type of dependency.
  */
 abstract class GenericInitialiser {
+
+	private $injectors = array();
 	/**
 	 * Used to passing in an object to initialise.
 	 *
@@ -38,10 +40,15 @@ abstract class GenericInitialiser {
 		$impl = class_implements($obj);
 		foreach($impl as $k => $v) {
 			$m = str_replace('\\', '_', $k);
-			if(method_exists($this, $m))
+			if(method_exists($this, $m)) {
 				$this->$m($obj);
-			else
+			} else
+			if(isset($this->injectors[$m])) {
+				$this->injectors[$m]($obj);
+
+			} else {
 				$this->miss($obj, $k);
+			}
 		}
 	}
 
@@ -58,5 +65,16 @@ abstract class GenericInitialiser {
 	 */
 	protected function miss($obj, $interface) {
 		throw new Exception("Cannot initialise object with interface $interface");
+	}
+
+	/**
+	 * Magic method for setting an interface injector on the fly
+	 */
+	public function __set($impl, $body) {
+		if(method_exists($this, $impl) || isset($this->initMethods[$impl])) {
+			throw new \Exception("Failed to set injector method for $impl -- already exists");
+		}
+
+		$this->injectors[$impl] = $body;
 	}
 }

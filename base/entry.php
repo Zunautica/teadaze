@@ -15,7 +15,7 @@ include('base/init.php');
  * requests to controllers.
  */
 
-class Entry
+class Entry extends CallbackHookable
 {
 	/** @var DBO $db A DBO object for the framework */
 	private $db;
@@ -24,6 +24,8 @@ class Entry
 	private $hooks;
 
 	private $controllerLoader = null;
+	protected $oninitialisedCB = null;
+	private $initialiser = null;
 
 	/**
 	 * The method for initialising an Entry object
@@ -48,14 +50,17 @@ class Entry
 			$this->db->setCallback('onquery', $hooks['dbo.onquery']);
 		}
 
-		$initialiser = new $config['initialiser']();
+		$this->initialiser = new $config['initialiser']();
 		$this->controllerLoader = new $config['loaders']['controller']();
 		$pluginLoader = new $config['loaders']['plugin']();
-		$initialiser->setControllerLoader($this->controllerLoader);
-		$initialiser->setModelLoader( new $config['loaders']['model']());
-		$initialiser->setViewLoader( new $config['loaders']['view']());
-		$initialiser->setPluginLoader($pluginLoader);
+		$this->initialiser->setControllerLoader($this->controllerLoader);
+		$this->initialiser->setModelLoader( new $config['loaders']['model']());
+		$this->initialiser->setViewLoader( new $config['loaders']['view']());
+		$this->initialiser->setPluginLoader($pluginLoader);
 		$this->hooks = new HookLines($hooks, $pluginLoader);
+		if($this->oninitialisedCB)
+			call_user_func($this->oninitialisedCB, $this);
+
 	}
 
 	/**
@@ -211,5 +216,9 @@ class Entry
 		}
 
 		return true;
+	}
+
+	public function getObjectInitialiser() {
+		return $this->initialiser;
 	}
 }

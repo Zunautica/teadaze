@@ -21,7 +21,7 @@ namespace Teadaze;
  * are only used in a composite.
  */
 	abstract class Controller extends ControlType
-	implements ControllerLoadingInterface, PluginLoadingInterface
+	implements ControllerLoadingInterface, PluginLoadingInterface, ViewLoadingInterface
 	{
 		/** @var string $name The name of the instantiated Controller */
 		private $name = null;
@@ -44,6 +44,9 @@ namespace Teadaze;
 		/** @var PluginLoader $pluginLoader The plugin loader used for when loading a model */
 		private $pluginLoader = null;
 
+		/** @var ViewLoader $viewLoader The view loader used for loading a view object */
+		private $viewLoader = null;
+
 		/**
 		 * When the object is instantiated, it is set it's name
 		 * @method __construct(string $name)
@@ -64,6 +67,9 @@ namespace Teadaze;
 			$this->pluginLoader = &$pluginLoader;
 		}
 
+		public final function setViewLoader(GenericLoader $viewLoader) {
+			$this->viewLoader = &$viewLoader;
+		}
 
 		/**
 		 * Load a particular view
@@ -80,7 +86,7 @@ namespace Teadaze;
 		protected function loadView($view)
 		{
 			try { 
-				$this->view = View::load($this->name, $view);
+				$this->view = $this->viewLoader->load("{$this->name}.$view");
 			} catch (exception $e) {
 				echo $e;
 			}

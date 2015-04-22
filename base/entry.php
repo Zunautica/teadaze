@@ -135,6 +135,8 @@ class Entry extends CallbackHookable
 		try {
 			while(!$this->runHook($target[0]."Controller", $target))
 				continue;
+			$this->runHook('preload', $target);
+
 			$controller = $this->controllerLoader->load($target[0]);
 			if($regular)
 				$controller = $controller->runInit(url_next_dir($target));
@@ -146,7 +148,12 @@ class Entry extends CallbackHookable
 			if(!$view)
 				throw new \Exception("No view loaded from {$target[0]}");
 
-			return $view->loadTemplate();
+			$html = $view->loadTemplate();
+			$sinker['html']= &$html;
+			$sinker['target']= &$target;
+
+			$this->hooks->run('ondispatch', $sinker);
+			return $html;
 		}
 		catch(exception $e) {
 			throw $e;

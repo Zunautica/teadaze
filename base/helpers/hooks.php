@@ -23,7 +23,7 @@ function frame_hook($hook, $item)
 		$hooks[$hook] = array();
 
 	if(is_array($item))
-		array_merge($hooks[$hook], $item);
+		$hooks[$hook] = array_merge($hooks[$hook], $item);
 	else
 		$hooks[$hook][] = $item;
 }

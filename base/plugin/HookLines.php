@@ -48,7 +48,7 @@ class HookLines
 			return;
 
 		foreach($this->lines[$hook] as $item) {
-			if(is_object($item) && is_callable($item)) {
+			if(is_object($item) && ($item instanceof \Closure)) {
 				$item($sinker);
 			} else {
 				$plugin = $this->pluginLoader->load($item);

@@ -185,7 +185,7 @@ class Entry extends CallbackHookable
 			}
 
 		} catch (exception $e) {
-			throw new \Exception("<strong>Error running hook</strong><br />$e");
+			throw new \Exception("Error running hook : $e");
 		}
 
 		return true;

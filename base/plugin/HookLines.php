@@ -47,10 +47,13 @@ class HookLines
 		if(!isset($this->lines[$hook]))
 			return;
 
-		foreach($this->lines[$hook] as $name) {
-			$plugin = $this->pluginLoader->load($name);
-
-			$plugin->run($sinker);
+		foreach($this->lines[$hook] as $item) {
+			if(is_object($item) && is_callable($item)) {
+				$item($sinker);
+			} else {
+				$plugin = $this->pluginLoader->load($item);
+				$plugin->run($sinker);
+			}
 		}
 	}
 }

@@ -36,9 +36,9 @@ Task Controllers are controllers that perform a single task - i.e. a template, a
 
 #### Plugins; Hooks, Lines and Sinkers
 
-Hooks are what you might expect, points of the flow where you can insert functionality. One type of hook is where the inserted functionality is built up from strings of plugins on what is called a 'hookline'. The hookline is attached to a hook and then a 'sinker' is passed through the plugins sequentially. The sinker is data to be manipulated depending on the context of the hook. Think of them like audio fitlers.
+Hooks are what you might expect, points of the flow where you can insert functionality. One type of hook is where the inserted functionality is built up from strings of plugins and closures on what is called a 'hookline'. The hookline is attached to a hook and then a 'sinker' is passed through the plugins sequentially. The sinker is data to be manipulated depending on the context of the hook. Think of them like audio fitlers.
 
-Plugins are built for specific types of hookline and can even change the flow in certain situations. At the moment you can attach hooklines to controllers, models and certain framework hooks but it will increase where necessary. A plugin can manage logging in, authentication etc. You can create hooks on models and their methods, especially called up by certain controllers and their views. which leads onto...
+Plugins or closures are written for specific types of hookline and can even change the flow in certain situations. At the moment you can attach hooklines to controllers, models and certain framework hooks but it will increase where necessary. A plugin can manage logging in, authentication etc. You can create hooks on models and their methods, especially called up by certain controllers and their views. which leads onto...
 
 #### Model Wrappers and CVM Hooks
 

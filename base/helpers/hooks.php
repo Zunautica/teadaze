@@ -3,18 +3,31 @@ namespace Teadaze;
 /**
  * A function to quickly add a framework hook
  *
- * This function takes the hook name and a hookline to include
- * The hookline has names of plugins in the format 'package.plugin'.
+ * This function takes the hook name and an itm
  *
- * @method frame_hook(string $hook, array $hookline)
+ * The item can either be an hookline array, in which case it is merged.
+ *
+ * The hookline has names of plugins in the format 'package.plugin'
+ *
+ * It could be a string in the format 'package.plugin' or it could
+ * be a closure. Both of these are appended.
+ *
+ * @method frame_hook(string $hook, $item)
  * @param string $hook The name of the hook to add
  * @param array $hookline An array of plugin names on a hookline
  */
-function frame_hook($hook, array $hookline)
+function frame_hook($hook, $item)
 {
 	global $hooks;
-	$hooks[$hook] = $hookline;
+	if(!isset($hooks[$hook]))
+		$hooks[$hook] = array();
+
+	if(is_array($item))
+		array_merge($hooks[$hook], $item);
+	else
+		$hooks[$hook][] = $item;
 }
+
 
 /**
  * A function to quickly setup a hook on a controller
@@ -27,11 +40,11 @@ function frame_hook($hook, array $hookline)
  * @param array $hookline An array of plugin names on a hookline
  */
 
-function controller_hook($controller, array $hookline)
+function controller_hook($controller, $item)
 {
-	global $hooks;
-	$hooks["{$controller}Controller"] = $hookline;
+	frame_hook("{$controller}Controller", $item);
 }
+
 
 /**
  * A function for setting up a controller-view-model hook.
